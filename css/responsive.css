@@ -1,0 +1,180 @@
+/* =============================================
+   responsive.css — Mobile & Tablet Breakpoints
+   Holiday Package Booking System
+   ============================================= */
+
+/* ---- Tablet (≤ 1024px) ---- */
+@media (max-width: 1024px) {
+  :root { --sidebar-width: 220px; }
+
+  .packages-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-summary-card {
+    position: static;
+    order: -1; /* Show summary above form on tablet */
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content h2 { font-size: 1.5rem; }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---- Mobile Landscape & small tablet (≤ 768px) ---- */
+@media (max-width: 768px) {
+  /* Sidebar becomes a slide-in drawer */
+  .sidebar {
+    transform: translateX(-100%);
+    z-index: 300;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.25);
+  }
+
+  /* Main content fills full width when sidebar is closed */
+  .main-content {
+    margin-left: 0;
+  }
+
+  /* Show the hamburger button */
+  .hamburger-btn {
+    display: flex;
+  }
+
+  /* Navbar search hides on small screens */
+  .navbar-search {
+    display: none;
+  }
+
+  /* Page body less padding */
+  .page-body {
+    padding: 16px;
+  }
+
+  /* Hero banner stacks */
+  .hero-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 28px 20px;
+  }
+
+  .hero-banner .hero-image {
+    margin-top: 20px;
+    max-width: 200px;
+  }
+
+  .hero-content p { max-width: 100%; }
+
+  /* Stat cards go single column */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  /* Search row stacks vertically */
+  .search-row {
+    flex-direction: column;
+  }
+
+  .search-field.destination,
+  .search-field.date,
+  .search-field.passengers {
+    flex: none;
+    width: 100%;
+    min-width: unset;
+  }
+
+  .search-btn {
+    width: 100%;
+    height: 42px;
+    border-radius: var(--border-radius-sm);
+  }
+
+  /* Route info bar wraps */
+  .route-info-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* Tab nav scrolls horizontally */
+  .tab-nav {
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  /* Flight row layout adjustments */
+  .flight-times { flex-wrap: wrap; }
+
+  .flight-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .flight-price { width: 100%; text-align: left; }
+
+  /* Booking form 2-col → 1-col */
+  .form-grid,
+  .form-grid.three-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .step-title { display: none; } /* hide text on mobile, keep numbers */
+
+  /* Contact page */
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Small Mobile (≤ 480px) ---- */
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card { padding: 14px; }
+
+  .navbar {
+    padding: 0 14px;
+  }
+
+  .page-header h1 { font-size: 1.2rem; }
+
+  .hero-content h2 { font-size: 1.25rem; }
+
+  .tab-btn { padding: 7px 14px; font-size: 0.82rem; }
+
+  .modal-box { padding: 28px 20px; }
+
+  .card-price-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .package-card:hover { transform: none; } /* disable hover lift on touch */
+
+  .table-card { overflow-x: auto; }
+  .table-card table { min-width: 500px; }
+}
+
+/* ---- Print styles (nice to have) ---- */
+@media print {
+  .sidebar, .navbar, .modal-overlay { display: none !important; }
+  .main-content { margin-left: 0; }
+  .page-body { padding: 0; }
+}

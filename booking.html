@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Package — HolidayBook</title>
+  <meta name="description" content="Complete your holiday package booking in 3 easy steps." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/sidebar.css" />
+  <link rel="stylesheet" href="css/cards.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="app-shell">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+    <div class="sidebar-logo">
+      <div class="logo-fallback">H</div>
+      <span class="logo-text">Holiday<span>Book</span></span>
+    </div>
+    <nav class="nav-groups">
+      <div class="nav-group-label">Menu</div>
+      <a href="index.html"    class="nav-item" data-page="index.html"><div class="nav-item-left"><span class="nav-icon"><i class="fas fa-home"></i></span>Dashboard</div></a>
+      <a href="packages.html" class="nav-item" data-page="packages.html"><div class="nav-item-left"><span class="nav-icon"><i class="fas fa-map-marked-alt"></i></span>Packages</div></a>
+      <a href="booking.html"  class="nav-item active" data-page="booking.html"><div class="nav-item-left"><span class="nav-icon"><i class="fas fa-ticket-alt"></i></span>Bookings</div></a>
+      <a href="contact.html"  class="nav-item" data-page="contact.html"><div class="nav-item-left"><span class="nav-icon"><i class="fas fa-headset"></i></span>Support</div></a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user-avatar">GK</div>
+      <div class="sidebar-user-info">
+        <div class="name">Girish Kumar</div>
+        <div class="role">Travel Manager</div>
+      </div>
+      <button class="sidebar-logout-btn" title="Logout"><i class="fas fa-sign-out-alt"></i></button>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="main-content">
+
+    <header class="navbar" role="banner">
+      <div class="navbar-left">
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="navbar-right">
+        <a href="packages.html" class="btn-outline" style="font-size:0.83rem;">
+          <i class="fas fa-arrow-left"></i> Back to Packages
+        </a>
+        <div class="user-avatar" tabindex="0">
+          <img src="https://ui-avatars.com/api/?name=Girish+Kumar&background=2563eb&color=fff&size=64" alt="User" />
+          <span class="user-name">Girish Kumar</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-body" id="main" role="main">
+
+      <div class="page-header">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          <a href="packages.html">Packages</a>
+          <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          <span>Book Package</span>
+        </nav>
+        <h1>Complete Your Booking</h1>
+        <p>Fill in your details below to confirm your holiday package.</p>
+      </div>
+
+      <!-- 3-step progress indicator -->
+      <div class="step-progress" role="list" aria-label="Booking steps">
+        <div class="step active" role="listitem">
+          <div class="step-num">1</div>
+          <div class="step-title">Traveller Info</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step" role="listitem">
+          <div class="step-num">2</div>
+          <div class="step-title">Review & Confirm</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step" role="listitem">
+          <div class="step-num">3</div>
+          <div class="step-title">Payment</div>
+        </div>
+      </div>
+
+      <!-- Two-column layout: form (left) + summary (right) -->
+      <div class="booking-layout">
+
+        <!-- ===== BOOKING FORM ===== -->
+        <div>
+
+          <!-- Step 1: Traveller Info -->
+          <div class="booking-form-card step-panel" data-step="1">
+
+            <div class="form-section-title">Lead Traveller Details</div>
+
+            <div class="form-grid" id="traveller-list">
+              <!-- Row 1 -->
+              <div class="form-group">
+                <label for="first-name">First Name *</label>
+                <input type="text" id="first-name" placeholder="Enter first name" required autocomplete="given-name" />
+                <span class="error-msg">First name is required.</span>
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name *</label>
+                <input type="text" id="last-name" placeholder="Enter last name" required autocomplete="family-name" />
+                <span class="error-msg">Last name is required.</span>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" placeholder="you@example.com" required autocomplete="email" />
+                <span class="error-msg">Enter a valid email address.</span>
+              </div>
+              <div class="form-group">
+                <label for="phone">Mobile Number *</label>
+                <input type="tel" id="phone" placeholder="10-digit mobile number" required autocomplete="tel" maxlength="10" />
+                <span class="error-msg">Enter a valid 10-digit mobile number.</span>
+              </div>
+              <div class="form-group">
+                <label for="dob">Date of Birth *</label>
+                <input type="date" id="dob" required />
+                <span class="error-msg">Date of birth is required.</span>
+              </div>
+              <div class="form-group">
+                <label for="gender">Gender *</label>
+                <select id="gender" required>
+                  <option value="">Select gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Prefer not to say</option>
+                </select>
+                <span class="error-msg">Please select a gender.</span>
+              </div>
+              <div class="form-group">
+                <label for="passport">Passport / ID Number</label>
+                <input type="text" id="passport" placeholder="Optional for domestic travel" />
+              </div>
+              <div class="form-group">
+                <label for="nationality">Nationality *</label>
+                <select id="nationality" required>
+                  <option value="">Select nationality</option>
+                  <option selected>Indian</option>
+                  <option>Other</option>
+                </select>
+                <span class="error-msg">Nationality is required.</span>
+              </div>
+            </div>
+
+            <!-- Add extra travellers button -->
+            <button class="btn-outline" id="add-traveller" type="button" style="margin-top: 4px;">
+              <i class="fas fa-plus"></i> Add Another Traveller
+            </button>
+
+            <div class="form-section-title" style="margin-top: 24px;">Travel Preferences</div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="room-type">Room Type *</label>
+                <select id="room-type" required>
+                  <option value="">Select room type</option>
+                  <option>Standard Room</option>
+                  <option selected>Deluxe Room</option>
+                  <option>Suite</option>
+                  <option>Villa</option>
+                </select>
+                <span class="error-msg">Please select a room type.</span>
+              </div>
+              <div class="form-group">
+                <label for="meal-plan">Meal Plan</label>
+                <select id="meal-plan">
+                  <option>CP (Breakfast only)</option>
+                  <option selected>MAP (Breakfast + Dinner)</option>
+                  <option>AP (All Meals)</option>
+                  <option>EP (No Meals)</option>
+                </select>
+              </div>
+              <div class="form-group full-width">
+                <label for="special-req">Special Requests</label>
+                <textarea id="special-req" rows="3" placeholder="Wheelchair assistance, dietary requirements, anniversary decoration, etc."></textarea>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn-solid btn-next" type="button">
+                Next: Review &amp; Confirm <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+
+          </div>
+          <!-- End Step 1 -->
+
+          <!-- Step 2: Review & Confirm -->
+          <div class="booking-form-card step-panel hidden" data-step="2">
+
+            <div class="form-section-title">Review Your Booking</div>
+            <p class="text-muted text-sm mb-16">Please verify the package and traveller details before proceeding to payment.</p>
+
+            <!-- Package review details -->
+            <div style="background: var(--page-bg); border-radius: var(--border-radius); padding: 16px; margin-bottom: 20px; border: 1.5px solid var(--border);">
+              <div class="summary-row">
+                <span class="label">Destination</span>
+                <span class="value" id="rev-destination">—</span>
+              </div>
+              <div class="summary-row">
+                <span class="label">Hotel Standard</span>
+                <span class="value" id="rev-stars">—</span>
+              </div>
+              <div class="summary-row">
+                <span class="label">Holiday Type</span>
+                <span class="value" id="rev-type">—</span>
+              </div>
+              <div class="summary-row">
+                <span class="label">Room Type</span>
+                <span class="value" id="rev-room">Deluxe Room</span>
+              </div>
+              <div class="summary-row">
+                <span class="label">Meal Plan</span>
+                <span class="value" id="rev-meal">MAP</span>
+              </div>
+            </div>
+
+            <!-- Terms and conditions checkbox -->
+            <label class="filter-checkbox" style="margin-bottom: 12px; font-size: 0.87rem;">
+              <input type="checkbox" id="terms-check" required />
+              I agree to the <a href="#" class="text-primary">Terms & Conditions</a> and <a href="#" class="text-primary">Cancellation Policy</a>.
+            </label>
+
+            <div class="form-actions">
+              <button class="btn-outline btn-prev" type="button">
+                <i class="fas fa-arrow-left"></i> Back
+              </button>
+              <button class="btn-solid btn-next" type="button">
+                Next: Payment <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+
+          </div>
+          <!-- End Step 2 -->
+
+          <!-- Step 3: Payment -->
+          <div class="booking-form-card step-panel hidden" data-step="3">
+
+            <div class="form-section-title">Payment Details</div>
+            <p class="text-muted text-sm mb-16">Your payment is secured with 256-bit SSL encryption. 🔒</p>
+
+            <!-- Payment method selector -->
+            <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
+              <label style="display:flex; align-items:center; gap:8px; padding:10px 16px; border:1.5px solid var(--primary); border-radius:var(--border-radius-sm); cursor:pointer; background:var(--primary-light); font-size:0.87rem; font-weight:600;">
+                <input type="radio" name="payment-method" value="card" checked /> 💳 Credit / Debit Card
+              </label>
+              <label style="display:flex; align-items:center; gap:8px; padding:10px 16px; border:1.5px solid var(--border); border-radius:var(--border-radius-sm); cursor:pointer; font-size:0.87rem; font-weight:600;">
+                <input type="radio" name="payment-method" value="upi" /> 📱 UPI
+              </label>
+              <label style="display:flex; align-items:center; gap:8px; padding:10px 16px; border:1.5px solid var(--border); border-radius:var(--border-radius-sm); cursor:pointer; font-size:0.87rem; font-weight:600;">
+                <input type="radio" name="payment-method" value="netbanking" /> 🏦 Net Banking
+              </label>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label for="card-name">Cardholder Name *</label>
+                <input type="text" id="card-name" placeholder="Name as on card" required autocomplete="cc-name" />
+                <span class="error-msg">Cardholder name is required.</span>
+              </div>
+              <div class="form-group full-width">
+                <label for="card-number">Card Number *</label>
+                <input type="text" id="card-number" placeholder="1234  5678  9012  3456" required autocomplete="cc-number" maxlength="19" />
+                <span class="error-msg">Please enter a valid card number.</span>
+              </div>
+              <div class="form-group">
+                <label for="card-expiry">Expiry Date *</label>
+                <input type="text" id="card-expiry" placeholder="MM / YY" required autocomplete="cc-exp" maxlength="7" />
+                <span class="error-msg">Expiry date is required.</span>
+              </div>
+              <div class="form-group">
+                <label for="card-cvv">CVV *</label>
+                <input type="password" id="card-cvv" placeholder="•••" required autocomplete="cc-csc" maxlength="3" />
+                <span class="error-msg">CVV is required.</span>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn-outline btn-prev" type="button">
+                <i class="fas fa-arrow-left"></i> Back
+              </button>
+              <button class="btn-solid" id="submit-booking" type="button">
+                <i class="fas fa-lock"></i> Confirm &amp; Pay
+              </button>
+            </div>
+
+          </div>
+          <!-- End Step 3 -->
+
+        </div>
+        <!-- End form column -->
+
+        <!-- ===== BOOKING SUMMARY SIDEBAR ===== -->
+        <aside class="booking-summary-card" aria-label="Booking summary">
+          <h3>📋 Booking Summary</h3>
+          <div class="summary-row">
+            <span class="label">Destination</span>
+            <span class="value" id="sum-destination">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Hotel Rating</span>
+            <span class="value" id="sum-stars">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Holiday Type</span>
+            <span class="value" id="sum-type">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Travellers</span>
+            <span class="value">2 Adults</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Duration</span>
+            <span class="value">5 Nights / 6 Days</span>
+          </div>
+          <hr style="border-color: var(--border); margin: 4px 0;" />
+          <div class="summary-row">
+            <span class="label">Base Price / person</span>
+            <span class="value" id="sum-price">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Taxes & Fees (18% GST)</span>
+            <span class="value">Included</span>
+          </div>
+          <div class="summary-total">
+            <span>Total</span>
+            <span class="amount" id="sum-total">—</span>
+          </div>
+
+          <!-- Secure trust badges -->
+          <div style="margin-top: 20px; padding-top: 16px; border-top: 1.5px solid var(--border);">
+            <p class="text-muted text-sm" style="margin-bottom: 10px; text-align: center;">Why book with us?</p>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div class="flex-center gap-8 text-sm"><span>✅</span> Free cancellation (T&C apply)</div>
+              <div class="flex-center gap-8 text-sm"><span>🔒</span> Secure payment gateway</div>
+              <div class="flex-center gap-8 text-sm"><span>📞</span> 24/7 customer support</div>
+              <div class="flex-center gap-8 text-sm"><span>💰</span> Best price guarantee</div>
+            </div>
+          </div>
+
+        </aside>
+        <!-- End summary -->
+
+      </div>
+      <!-- End booking layout -->
+
+    </main>
+  </div>
+
+</div>
+
+<!-- ===== BOOKING CONFIRMATION MODAL ===== -->
+<div class="modal-overlay" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+    <div class="modal-icon">🎉</div>
+    <h3 id="modal-title">Booking Confirmed!</h3>
+    <p>Your holiday package has been successfully booked. A confirmation email will be sent to your registered email address.</p>
+    <div class="modal-ref" aria-label="Booking reference number">
+      Booking Ref: <span id="booking-ref">HB000000</span>
+    </div>
+    <div style="display: flex; gap: 12px; justify-content: center;">
+      <button class="btn-outline" id="modal-close-btn" type="button">View Details</button>
+      <button class="btn-solid" id="modal-done-btn" type="button">
+        <i class="fas fa-home"></i> Go to Dashboard
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/booking.js"></script>
+</body>
+</html>

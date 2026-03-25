@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browse Packages — HolidayBook</title>
+  <meta name="description" content="Search and filter Indian and International holiday packages with flights." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/sidebar.css" />
+  <link rel="stylesheet" href="css/cards.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="app-shell">
+
+  <!-- ===== SIDEBAR (same on every page) ===== -->
+  <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+    <div class="sidebar-logo">
+      <img src="assets/images/logo.png" alt="HolidayBook" />
+      <span class="logo-text">Holiday<span>Book</span></span>
+    </div>
+    <nav class="nav-groups">
+      <div class="nav-group-label">Menu</div>
+      <a href="index.html"    class="nav-item" data-page="index.html"><div class="nav-item-left"><span class="nav-icon"><i class="fas fa-home"></i></span>Dashboard</div></a>
+      <a href="packages.html" class="nav-item active" data-page="packages.html"><div class="nav-item-left"><span class="nav-icon"><i class="fas fa-map-marked-alt"></i></span>Packages</div></a>
+      <a href="booking.html"  class="nav-item" data-page="booking.html"><div class="nav-item-left"><span class="nav-icon"><i class="fas fa-ticket-alt"></i></span>Bookings</div></a>
+      <a href="contact.html"  class="nav-item" data-page="contact.html"><div class="nav-item-left"><span class="nav-icon"><i class="fas fa-headset"></i></span>Support</div></a>
+      <div class="nav-group-label">User Control</div>
+      <a href="#" class="nav-item"><div class="nav-item-left"><span class="nav-icon"><i class="fas fa-user-cog"></i></span>User Settings</div></a>
+      <a href="#" class="nav-item"><div class="nav-item-left"><span class="nav-icon"><i class="fas fa-chart-bar"></i></span>Reports</div></a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user-avatar">GK</div>
+      <div class="sidebar-user-info">
+        <div class="name">Girish Kumar</div>
+        <div class="role">Travel Manager</div>
+      </div>
+      <button class="sidebar-logout-btn" title="Logout"><i class="fas fa-sign-out-alt"></i></button>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="main-content">
+
+    <header class="navbar" role="banner">
+      <div class="navbar-left">
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="navbar-search">
+          <span class="search-icon"><i class="fas fa-search"></i></span>
+          <input type="search" placeholder="Search packages…" aria-label="Search" />
+        </div>
+      </div>
+      <div class="navbar-right">
+        <button class="icon-btn" title="Notifications"><i class="fas fa-bell"></i><span class="badge"></span></button>
+        <div class="user-avatar" tabindex="0">
+          <img src="https://ui-avatars.com/api/?name=Girish+Kumar&background=2563eb&color=fff&size=64" alt="User avatar" />
+          <span class="user-name">Girish Kumar</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-body" id="main" role="main">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+          <span>Packages</span>
+        </nav>
+        <h1>Holiday Packages</h1>
+        <p>Find the perfect holiday — filter by destination, star rating, and flight preference.</p>
+      </div>
+
+      <!-- Holiday Type Tabs -->
+      <div class="tab-nav" role="tablist" aria-label="Holiday type">
+        <button class="tab-btn type-tab-btn active" data-type="indian" role="tab" aria-selected="true">
+          🇮🇳 Indian Holidays
+        </button>
+        <button class="tab-btn type-tab-btn" data-type="international" role="tab" aria-selected="false">
+          🌍 International Holidays
+        </button>
+      </div>
+
+      <!-- Flights Sub-tab -->
+      <div class="sub-tab-nav" role="tablist" aria-label="Flight option">
+        <button class="sub-tab-btn flight-tab-btn active" data-mode="with" role="tab" aria-selected="true">
+          ✈️ Package with Flights
+        </button>
+        <button class="sub-tab-btn flight-tab-btn" data-mode="without" role="tab" aria-selected="false">
+          🚌 Package without Flights
+        </button>
+      </div>
+
+      <!-- Search & Filter Bar -->
+      <div class="search-bar-card" role="search" aria-label="Package search and filters">
+        <div class="search-row">
+          <div class="search-field destination">
+            <label for="destination-input">Destination</label>
+            <input type="text" id="destination-input" placeholder="e.g. Goa, Manali, Dubai…" autocomplete="off" />
+          </div>
+          <div class="search-field date">
+            <label for="date-input">Travel Date</label>
+            <input type="date" id="date-input" />
+          </div>
+          <div class="search-field passengers">
+            <label for="passengers-select">Passengers</label>
+            <select id="passengers-select">
+              <option>1 Adult</option>
+              <option selected>2 Adults</option>
+              <option>2 Adults, 1 Child</option>
+              <option>2 Adults, 2 Children</option>
+              <option>4 Adults</option>
+              <option>Group (5+)</option>
+            </select>
+          </div>
+          <button class="search-btn" id="search-btn" aria-label="Search packages">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+
+        <!-- Star rating & meal filters -->
+        <div class="filter-row">
+          <span class="filter-label">Hotel Standard:</span>
+          <div class="star-filter-group" role="group" aria-label="Filter by star rating">
+            <button class="star-btn" data-stars="3" aria-label="3 star hotels">3★</button>
+            <button class="star-btn" data-stars="4" aria-label="4 star hotels">4★</button>
+            <button class="star-btn" data-stars="5" aria-label="5 star hotels">5★</button>
+          </div>
+          <label class="filter-checkbox">
+            <input type="checkbox" id="add-lunch" /> Add Lunch
+          </label>
+          <label class="filter-checkbox">
+            <input type="checkbox" id="add-dinner" /> Add Dinner
+          </label>
+        </div>
+      </div>
+
+      <!-- Route Info (static display) -->
+      <div class="route-info-bar" role="region" aria-label="Selected route">
+        <div class="route-point">
+          <span class="route-label">From</span>
+          <span class="route-value">Rajiv Gandhi International Airport (HYD), Hyderabad, India</span>
+        </div>
+        <span class="route-arrow"><i class="fas fa-arrow-right"></i></span>
+        <div class="route-point">
+          <span class="route-label">To</span>
+          <span class="route-value">Your selected destination</span>
+        </div>
+        <div style="margin-left:auto; display:flex; gap:16px; align-items:center;">
+          <div class="route-point">
+            <span class="route-label">Departure</span>
+            <span class="route-value">Tue, Mar 12</span>
+          </div>
+          <div class="route-point">
+            <span class="route-label">Return</span>
+            <span class="route-value">Sun, Mar 17</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Grid — populated by packages.js -->
+      <div class="packages-grid" id="packages-grid" role="list" aria-label="Package results" aria-live="polite">
+        <!-- Package cards are injected here by packages.js -->
+        <div class="empty-state">
+          <div class="empty-icon">⏳</div>
+          <h3>Loading packages…</h3>
+          <p>Please wait while we fetch your results.</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/packages.js"></script>
+</body>
+</html>
