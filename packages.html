@@ -59,7 +59,9 @@
       <div class="navbar-right">
         <button class="icon-btn" title="Notifications"><i class="fas fa-bell"></i><span class="badge"></span></button>
         <div class="user-avatar" tabindex="0">
-          <img src="https://ui-avatars.com/api/?name=Girish+Kumar&background=2563eb&color=fff&size=64" alt="User avatar" />
+          <!-- Drop your avatar photo as: assets/images/avatar.jpg -->
+          <img src="assets/images/avatar.jpg" alt="User avatar"
+               onerror="this.src='https://ui-avatars.com/api/?name=Girish+Kumar&background=111111&color=fff&size=64'" />
           <span class="user-name">Girish Kumar</span>
         </div>
       </div>
@@ -78,23 +80,22 @@
         <p>Find the perfect holiday — filter by destination, star rating, and flight preference.</p>
       </div>
 
-      <!-- Holiday Type Tabs -->
       <div class="tab-nav" role="tablist" aria-label="Holiday type">
         <button class="tab-btn type-tab-btn active" data-type="indian" role="tab" aria-selected="true">
-          🇮🇳 Indian Holidays
+          Indian Holidays
         </button>
         <button class="tab-btn type-tab-btn" data-type="international" role="tab" aria-selected="false">
-          🌍 International Holidays
+          International Holidays
         </button>
       </div>
 
       <!-- Flights Sub-tab -->
       <div class="sub-tab-nav" role="tablist" aria-label="Flight option">
         <button class="sub-tab-btn flight-tab-btn active" data-mode="with" role="tab" aria-selected="true">
-          ✈️ Package with Flights
+          Package with Flights
         </button>
         <button class="sub-tab-btn flight-tab-btn" data-mode="without" role="tab" aria-selected="false">
-          🚌 Package without Flights
+          Package without Flights
         </button>
       </div>
 
@@ -169,8 +170,8 @@
       <div class="packages-grid" id="packages-grid" role="list" aria-label="Package results" aria-live="polite">
         <!-- Package cards are injected here by packages.js -->
         <div class="empty-state">
-          <div class="empty-icon">⏳</div>
-          <h3>Loading packages…</h3>
+          <div class="empty-icon" style="font-size:2rem; opacity:0.3;"><i class="fas fa-plane"></i></div>
+          <h3>Loading packages...</h3>
           <p>Please wait while we fetch your results.</p>
         </div>
       </div>

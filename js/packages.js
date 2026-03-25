@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (filtered.length === 0) {
       resultsGrid.innerHTML = `
         <div class="empty-state">
-          <div class="empty-icon">✈️</div>
+          <div class="empty-icon" style="font-size:2.5rem; opacity:0.3;"><i class="fas fa-plane"></i></div>
           <h3>No packages found</h3>
           <p>Try adjusting your filters or search for a different destination.</p>
         </div>`;
@@ -221,6 +221,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Maps each airline name to its logo image file.
+  // Place the files in assets/images/ using the filenames below.
+  const airlineLogoMap = {
+    'Air India Express': 'assets/images/air-india-express.png',
+    'Air India':         'assets/images/air-india.png',
+    'Indigo':            'assets/images/indigo.png',
+    'Star Air':          'assets/images/star-air.png',
+    'Emirates':          'assets/images/emirates.png',
+    'Thai Airways':      'assets/images/thai-airways.png',
+  };
+
   // Builds a single package card DOM element
   function createPackageCard(pkg) {
     const card = document.createElement('div');
@@ -232,9 +243,22 @@ document.addEventListener('DOMContentLoaded', () => {
       ? `₹${pkg.roundTrip.toLocaleString('en-IN')}`
       : `₹${pkg.totalPrice.toLocaleString('en-IN')}`;
 
+    // Get airline logo path from map, fall back gracefully if not found
+    const logoSrc = pkg.airline ? (airlineLogoMap[pkg.airline] || '') : '';
+    const airlineLogoHtml = logoSrc
+      ? `<img src="${logoSrc}" alt="${pkg.airline} logo"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <span style="display:none; width:100%; height:100%; align-items:center; justify-content:center;">
+            <i class="fas fa-plane" style="font-size:0.8rem; color:#999;"></i>
+          </span>`
+      : `<i class="fas fa-plane" style="font-size:0.8rem; color:#999;"></i>`;
+
+    // Stars as text (e.g. "4 Star")
+    const starLabel = pkg.stars ? `${pkg.stars} Star` : '';
+
     const flightSection = pkg.withFlights && pkg.airline ? `
       <div class="flight-row">
-        <div class="airline-logo">✈</div>
+        <div class="airline-logo">${airlineLogoHtml}</div>
         <div class="airline-info">
           <div class="airline-name">${pkg.airline}</div>
           <div class="flight-number">${pkg.flightNo || ''}</div>
@@ -253,20 +277,21 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
       <div class="flight-badges">
-        ${pkg.handBaggage ? `<span class="badge-item"><i>🧳</i> Hand Baggage - ${pkg.handBaggage}</span>` : ''}
-        ${pkg.checkInBaggage ? `<span class="badge-item"><i>✔️</i> Check-in Baggage</span>` : ''}
-        ${pkg.refundable     ? `<span class="badge-item"><i>↩️</i> Refundable</span>` : `<span class="badge-item text-danger"><i>✖️</i> Non-Refundable</span>`}
-        ${pkg.hasMeal        ? `<span class="badge-item"><i>🍽️</i> Meal Included</span>` : ''}
+        ${pkg.handBaggage   ? `<span class="badge-item"><i class="fas fa-suitcase"></i> Hand Baggage - ${pkg.handBaggage}</span>` : ''}
+        ${pkg.checkInBaggage ? `<span class="badge-item"><i class="fas fa-check-circle"></i> Check-in Baggage</span>` : ''}
+        ${pkg.refundable     ? `<span class="badge-item"><i class="fas fa-undo"></i> Refundable</span>`
+                             : `<span class="badge-item text-danger"><i class="fas fa-times-circle"></i> Non-Refundable</span>`}
+        ${pkg.hasMeal        ? `<span class="badge-item"><i class="fas fa-utensils"></i> Meal Included</span>` : ''}
       </div>` : `
       <div style="padding: 16px; color: var(--text-muted); font-size: 0.87rem;">
-        🚌 Land package — no flights included
+        <i class="fas fa-bus" style="margin-right:6px;"></i> Land package - no flights included
       </div>`;
 
     card.innerHTML = `
       <div class="card-price-bar">
         <div class="trip-label">
-          📍 ${pkg.destination}&nbsp;&nbsp;
-          ${'⭐'.repeat(pkg.stars)}
+          <i class="fas fa-map-marker-alt" style="margin-right:4px;"></i>${pkg.destination}&nbsp;&nbsp;
+          ${starLabel}
         </div>
         <div class="trip-price">From ₹${pkg.totalPrice.toLocaleString('en-IN')}</div>
         ${pkg.roundTrip ? `<div class="total-price">Round Trip ${totalDisplay}</div>` : ''}
@@ -280,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="total-price">₹${pkg.totalPrice.toLocaleString('en-IN')}</div>
           <div class="total-sub">Per person (taxes incl.)</div>
         </div>
-        <button class="btn-solid book-btn" data-id="${pkg.id}">Book Now →</button>
+        <button class="btn-solid book-btn" data-id="${pkg.id}">Book Now</button>
       </div>`;
 
     // Navigate to booking page when "Book Now" is clicked

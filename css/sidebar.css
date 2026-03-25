@@ -104,7 +104,7 @@
 }
 
 .nav-item.active {
-  background: var(--primary);
+  background: var(--sidebar-active-blue);
   color: var(--sidebar-text-active);
 }
 

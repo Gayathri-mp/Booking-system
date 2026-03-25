@@ -41,8 +41,8 @@
 .search-btn {
   width: 42px;
   height: 42px;
-  background: var(--primary);
-  color: #fff;
+  background: #111111;
+  color: #ffffff;
   border-radius: var(--border-radius-sm);
   display: flex;
   align-items: center;
@@ -54,7 +54,7 @@
 }
 
 .search-btn:hover {
-  background: var(--primary-dark);
+  background: #333333;
   transform: scale(1.05);
 }
 
@@ -82,17 +82,17 @@
   border-radius: 100px;
   font-size: 0.78rem;
   font-weight: 600;
-  border: 1.5px solid var(--border);
+  border: 1.5px solid #cccccc;
   color: var(--text-secondary);
-  background: #fff;
+  background: #ffffff;
   transition: all var(--transition);
 }
 
 .star-btn:hover,
 .star-btn.active {
-  border-color: var(--primary);
-  background: var(--primary);
-  color: #fff;
+  border-color: #111111;
+  background: #111111;
+  color: #ffffff;
 }
 
 .filter-checkbox {
@@ -108,7 +108,7 @@
 .filter-checkbox input[type="checkbox"] {
   width: 16px;
   height: 16px;
-  accent-color: var(--primary);
+  accent-color: #111111;
   cursor: pointer;
 }
 
@@ -136,8 +136,8 @@
 .tab-btn:hover { color: var(--text-primary); }
 
 .tab-btn.active {
-  background: var(--primary);
-  color: #fff;
+  background: #111111;
+  color: #ffffff;
   box-shadow: var(--shadow-sm);
 }
 
@@ -164,8 +164,8 @@
 .sub-tab-btn:hover { color: var(--text-primary); }
 
 .sub-tab-btn.active {
-  color: var(--primary);
-  border-bottom-color: var(--primary);
+  color: #111111;
+  border-bottom-color: #111111;
 }
 
 /* --- Route Info Bar (above results) --- */
@@ -228,7 +228,7 @@
 
 /* Price summary bar at the top of each card */
 .card-price-bar {
-  background: linear-gradient(90deg, #1e3a8a, #2563eb);
+  background: #1a1a1a;
   color: #fff;
   padding: 10px 16px;
   display: flex;
@@ -407,7 +407,7 @@
   font-weight: 500;
 }
 
-.badge-item i { color: var(--primary); font-size: 0.75rem; }
+.badge-item i { color: #555555; font-size: 0.75rem; }
 
 /* Card Footer / Book Now */
 .card-footer {
@@ -420,7 +420,7 @@
 }
 
 .total-label { font-size: 0.8rem; color: var(--text-muted); }
-.total-price { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+.total-price { font-size: 1.1rem; font-weight: 700; color: #111111; }
 .total-sub   { font-size: 0.72rem; color: var(--text-muted); }
 
 /* --- No Results State --- */
@@ -519,8 +519,8 @@
 }
 
 .step.active .step-num {
-  border-color: var(--primary);
-  background: var(--primary);
+  border-color: #111111;
+  background: #111111;
   color: #fff;
 }
 
@@ -531,7 +531,7 @@
 }
 
 .step-title { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); }
-.step.active .step-title { color: var(--primary); }
+.step.active .step-title { color: #111111; }
 .step.done  .step-title  { color: var(--success); }
 
 .step-line {
@@ -567,7 +567,7 @@
   display: block;
   width: 4px;
   height: 18px;
-  background: var(--primary);
+  background: #111111;
   border-radius: 2px;
 }
 
@@ -599,7 +599,7 @@
 .form-group.has-error input,
 .form-group.has-error select {
   border-color: var(--danger);
-  box-shadow: 0 0 0 3px rgba(239,68,68,0.12);
+  box-shadow: 0 0 0 3px rgba(192,57,43,0.12);
 }
 
 .form-group.has-error .error-msg { display: block; }
@@ -710,8 +710,8 @@
   width: 42px;
   height: 42px;
   border-radius: 10px;
-  background: var(--primary-light);
-  color: var(--primary);
+  background: #f0f0f0;
+  color: #111111;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -720,7 +720,7 @@
 }
 
 .contact-icon.green { background: var(--success-light); color: var(--success); }
-.contact-icon.amber { background: var(--accent-light); color: #b45309; }
+.contact-icon.amber { background: #f5f5f5; color: #555555; }
 
 .contact-method-text .method-label {
   font-size: 0.8rem;
