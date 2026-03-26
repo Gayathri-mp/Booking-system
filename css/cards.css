@@ -253,39 +253,195 @@
   border-bottom-color: #111111;
 }
 
-/* --- Route Info Bar (above results) --- */
+/* =============================================
+   Route Info Bar — 3 sections
+   ============================================= */
 .route-info-bar {
   background: var(--card-bg);
-  border: 1.5px solid var(--border);
   border-radius: var(--border-radius);
-  padding: 14px 20px;
+  overflow: hidden;
   margin-bottom: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-  font-size: 0.85rem;
+  border: 1.5px solid var(--border);
 }
 
-.route-point {
+/* --- Section 1: Airport Fields Row --- */
+.rib-fields-row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border);
+}
+
+.rib-field {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  justify-content: center;
+  padding: 10px 16px;
+  gap: 3px;
+  min-width: 0;
 }
 
-.route-point .route-label {
+.rib-field-from { flex: 2.5; }
+.rib-field-to   { flex: 2; }
+.rib-field-date { flex: 1.2; min-width: 130px; }
+
+.rib-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.rib-value {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Thin vertical separator between fields */
+.rib-sep {
+  width: 1px;
+  background: var(--border);
+  align-self: stretch;
+  margin: 8px 0;
+}
+
+/* Swap button between from & departure date */
+.rib-swap-btn {
+  padding: 0 12px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  transition: color var(--transition);
+  border-right: 1px solid var(--border);
+}
+.rib-swap-btn:hover { color: #111111; }
+
+/* --- Section 2: Flight Summary Strip (dark blue gradient) --- */
+.rib-flight-strip {
+  display: flex;
+  align-items: stretch;
+  background: linear-gradient(90deg, #1e3a6e 0%, #2563eb 60%, #3b82f6 100%);
+  color: #fff;
+  min-height: 56px;
+}
+
+.rib-flight-seg {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 16px;
+  gap: 4px;
+}
+
+.rib-total-seg { text-align: right; }
+
+.rib-flight-header {
+  font-size: 0.72rem;
+  font-weight: 600;
+  opacity: 0.8;
+  letter-spacing: 0.02em;
+}
+
+.rib-pax { opacity: 1; font-size: 0.75rem; }
+
+.rib-flight-body {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rib-total-seg .rib-flight-body {
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.rib-times {
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rib-arr { font-size: 0.7rem; opacity: 0.7; }
+
+.rib-price {
+  font-size: 0.88rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.rib-total-label {
+  font-size: 0.78rem;
+  opacity: 0.8;
+}
+
+.rib-total-price {
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+/* Thin white vertical divider between segments */
+.rib-flight-divider {
+  width: 1px;
+  background: rgba(255,255,255,0.2);
+  margin: 8px 0;
+}
+
+/* --- Section 3: Outbound Column Headers --- */
+.rib-cols-row {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  background: var(--page-bg);
+}
+
+.rib-col-group {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 7px 16px;
   font-size: 0.72rem;
   color: var(--text-muted);
-  font-weight: 600;
-  text-transform: uppercase;
+  overflow: hidden;
 }
 
-.route-point .route-value { font-weight: 500; }
-
-.route-arrow {
-  color: var(--text-muted);
-  font-size: 1rem;
+.rib-col-title {
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-right: 16px;
+  white-space: nowrap;
 }
+
+.rib-col-head {
+  white-space: nowrap;
+  flex: 1;
+  text-align: center;
+}
+
+/* Thin vertical pipe between column heads */
+.rib-col-sep {
+  width: 1px;
+  height: 12px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* Mid separator between the two col groups */
+.rib-col-mid-sep {
+  width: 1px;
+  background: var(--border);
+  align-self: stretch;
+}
+
 
 /* --- Package Result Grid --- */
 .packages-grid {
