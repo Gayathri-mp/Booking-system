@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // In a real app these would come from an API or backend.
   // To add more packages, just add another object to this array.
   const packages = [
+    // ── Air India Express ──
     {
       id: 1,
       type: 'indian',
@@ -16,154 +17,241 @@ document.addEventListener('DOMContentLoaded', () => {
       destination: 'Goa',
       stars: 3,
       airline: 'Air India Express',
-      flightNo: '6E 2879 1C',
+      flightNo: 'IX 2879 TC',
       depTime: '12:05',
       arrTime: '13:30',
-      duration: '2h 15m',
+      duration: '01h 25m',
+      overnight: false,
       depCode: 'HYD',
-      arrCode: 'GOX',
-      price: 13300,
-      totalPrice: 105300,
-      roundTrip: 210600,
-      refundable: true,
-      handBaggage: '7 Kg',
-      checkInBaggage: true,
-      hasMeal: false,
+      arrCode: 'GOI',
+      stops: 'Nearby Airport',
+      seatsLeft: '9 seat(s) left',
+      tiers: [
+        { label: 'Publish',   price: 13300, badgeClass: 'pc-tier-label--publish',  checked: true  },
+        { label: 'Flex',      price: 13300, badgeClass: 'pc-tier-label--flex',     checked: false },
+        { label: 'XpressBiz', price: 29144, badgeClass: 'pc-tier-label--xpress',  checked: false },
+      ],
+      price: 13300, totalPrice: 105300, roundTrip: 210600,
+      refundable: true, handBaggage: '7 Kg', checkInBaggage: true, hasMeal: false,
     },
+    // ── Air India Express (2nd card — same route, mirrors reference) ──
     {
       id: 2,
       type: 'indian',
       withFlights: true,
       destination: 'Goa',
-      stars: 4,
-      airline: 'Air India',
-      flightNo: '6E 2879 1C',
-      depTime: '11:30',
-      arrTime: '18:55',
-      duration: '7h 25m',
+      stars: 3,
+      airline: 'Air India Express',
+      flightNo: 'IX 2879 TC',
+      depTime: '12:05',
+      arrTime: '13:30',
+      duration: '01h 25m',
+      overnight: false,
       depCode: 'HYD',
-      arrCode: 'GOX',
-      price: 13300,
-      totalPrice: 105300,
-      roundTrip: 210600,
-      refundable: false,
-      handBaggage: '7 Kg',
-      checkInBaggage: true,
-      hasMeal: true,
+      arrCode: 'GOI',
+      stops: 'Nearby Airport',
+      seatsLeft: '9 seat(s) left',
+      tiers: [
+        { label: 'Publish',   price: 13300, badgeClass: 'pc-tier-label--publish',  checked: true  },
+        { label: 'Flex',      price: 13300, badgeClass: 'pc-tier-label--flex',     checked: false },
+        { label: 'XpressBiz', price: 29144, badgeClass: 'pc-tier-label--xpress',  checked: false },
+      ],
+      price: 13300, totalPrice: 105300, roundTrip: 210600,
+      refundable: true, handBaggage: '7 Kg', checkInBaggage: true, hasMeal: false,
     },
+    // ── Air India ──
     {
       id: 3,
       type: 'indian',
       withFlights: true,
-      destination: 'Manali',
-      stars: 5,
-      airline: 'Indigo',
-      flightNo: '6E 416 | 6E 6944 5M',
-      depTime: '20:50',
-      arrTime: '06:20',
-      duration: '9h 30m',
+      destination: 'Goa',
+      stars: 4,
+      airline: 'Air India',
+      flightNo: 'IX 2879 TC',
+      depTime: '11:30',
+      arrTime: '18:55',
+      duration: '04h 30m',
+      overnight: false,
       depCode: 'HYD',
-      arrCode: 'KUU',
-      price: 13300,
-      totalPrice: 125000,
-      roundTrip: 248000,
-      refundable: true,
-      handBaggage: '7 Kg',
-      checkInBaggage: true,
-      hasMeal: false,
+      arrCode: 'GOX',
+      stops: '1 Stop(s) via BOM - 4 seat(s) left',
+      seatsLeft: null,
+      tiers: [
+        { label: 'SME',     price: 13300,  badgeClass: 'pc-tier-label--sme',     checked: true  },
+        { label: 'Publish', price: 105300, badgeClass: 'pc-tier-label--publish', checked: false },
+      ],
+      price: 13300, totalPrice: 105300, roundTrip: 210600,
+      refundable: true, handBaggage: '7 Kg', checkInBaggage: true, hasMeal: true,
     },
+    // ── Air India (2nd card) ──
     {
       id: 4,
+      type: 'indian',
+      withFlights: true,
+      destination: 'Goa',
+      stars: 4,
+      airline: 'Air India',
+      flightNo: 'IX 2879 TC',
+      depTime: '13:15',
+      arrTime: '06:15',
+      duration: '04h 30m',
+      overnight: true,
+      depCode: 'HYD',
+      arrCode: 'GOX',
+      stops: '2 Stop(s) via BOM - 6 seat(s) left',
+      seatsLeft: null,
+      tiers: [
+        { label: 'SME',     price: 13300,  badgeClass: 'pc-tier-label--sme',     checked: true  },
+        { label: 'Publish', price: 105300, badgeClass: 'pc-tier-label--publish', checked: false },
+      ],
+      price: 13300, totalPrice: 105300, roundTrip: 210600,
+      refundable: true, handBaggage: '7 Kg', checkInBaggage: true, hasMeal: true,
+    },
+    // ── Indigo ──
+    {
+      id: 5,
+      type: 'indian',
+      withFlights: true,
+      destination: 'Goa',
+      stars: 3,
+      airline: 'Indigo',
+      flightNo: '6E 426 SM | 6E 6944 SM',
+      depTime: '20:50',
+      arrTime: '0620',
+      duration: '09h 30m',
+      overnight: true,
+      depCode: 'HYD',
+      arrCode: 'GOI',
+      stops: '1 Stop(s) via PNQ - 9 seat(s) left',
+      seatsLeft: null,
+      tiers: [
+        { label: 'SME',     price: 13300, badgeClass: 'pc-tier-label--sme',     checked: true  },
+        { label: 'Publish', price: 13300, badgeClass: 'pc-tier-label--publish', checked: false },
+      ],
+      price: 13300, totalPrice: 125000, roundTrip: 248000,
+      refundable: true, handBaggage: '7 Kg', checkInBaggage: true, hasMeal: false,
+    },
+    // ── Indigo (2nd card — mirrors reference) ──
+    {
+      id: 6,
+      type: 'indian',
+      withFlights: true,
+      destination: 'Goa',
+      stars: 3,
+      airline: 'Indigo',
+      flightNo: '6E 426 SM | 6E 6944 SM',
+      depTime: '20:50',
+      arrTime: '0620',
+      duration: '09h 30m',
+      overnight: true,
+      depCode: 'HYD',
+      arrCode: 'GOI',
+      stops: '1 Stop(s) via PNQ - 9 seat(s) left',
+      seatsLeft: null,
+      tiers: [
+        { label: 'SME',     price: 13300, badgeClass: 'pc-tier-label--sme',     checked: true  },
+        { label: 'Publish', price: 13300, badgeClass: 'pc-tier-label--publish', checked: false },
+      ],
+      price: 13300, totalPrice: 125000, roundTrip: 248000,
+      refundable: true, handBaggage: '7 Kg', checkInBaggage: true, hasMeal: false,
+    },
+    // ── Star Air ──
+    {
+      id: 7,
       type: 'indian',
       withFlights: true,
       destination: 'Kerala',
       stars: 4,
       airline: 'Star Air',
-      flightNo: '5S 212 1G1 | 5S 210 1G2',
+      flightNo: 'SS 212 TQ2 | SS 210 TQ2',
       depTime: '09:50',
       arrTime: '17:55',
-      duration: '8h 05m',
+      duration: '08h 25m',
+      overnight: false,
       depCode: 'HYD',
-      arrCode: 'CCJ',
-      price: 13300,
-      totalPrice: 98000,
-      roundTrip: 194000,
-      refundable: false,
-      handBaggage: '7 Kg',
-      checkInBaggage: true,
-      hasMeal: false,
+      arrCode: 'GOX',
+      stops: '1 Stop(s) via ROY - 5 seat(s) left',
+      seatsLeft: null,
+      tiers: [
+        { label: 'Regular', price: 13300, badgeClass: 'pc-tier-label--regular', checked: true  },
+        { label: 'Flex',    price: 13300, badgeClass: 'pc-tier-label--flex',    checked: false },
+        { label: 'Comfort', price: 13300, badgeClass: 'pc-tier-label--comfort', checked: false },
+      ],
+      price: 13300, totalPrice: 98000, roundTrip: 194000,
+      refundable: false, handBaggage: '7 Kg', checkInBaggage: true, hasMeal: false,
     },
+    // ── Star Air (2nd card) ──
     {
-      id: 5,
+      id: 8,
+      type: 'indian',
+      withFlights: true,
+      destination: 'Kerala',
+      stars: 4,
+      airline: 'Star Air',
+      flightNo: 'SS 212 TQ2 | SS 210 TQ2',
+      depTime: '09:50',
+      arrTime: '17:55',
+      duration: '08h 25m',
+      overnight: false,
+      depCode: 'HYD',
+      arrCode: 'GOX',
+      stops: '1 Stop(s) via ROY - 5 seat(s) left',
+      seatsLeft: null,
+      tiers: [
+        { label: 'Regular', price: 13300, badgeClass: 'pc-tier-label--regular', checked: true  },
+        { label: 'Flex',    price: 13300, badgeClass: 'pc-tier-label--flex',    checked: false },
+        { label: 'Comfort', price: 13300, badgeClass: 'pc-tier-label--comfort', checked: false },
+      ],
+      price: 13300, totalPrice: 98000, roundTrip: 194000,
+      refundable: false, handBaggage: '7 Kg', checkInBaggage: true, hasMeal: false,
+    },
+    // ── International ──
+    {
+      id: 9,
       type: 'international',
       withFlights: true,
       destination: 'Dubai',
       stars: 5,
-      airline: 'Emirates',
-      flightNo: 'EK 524',
+      airline: 'Air India Express',
+      flightNo: 'IX 524 TC',
       depTime: '23:40',
       arrTime: '01:20',
-      duration: '3h 40m',
+      duration: '03h 40m',
+      overnight: true,
       depCode: 'HYD',
       arrCode: 'DXB',
-      price: 28500,
-      totalPrice: 185000,
-      roundTrip: 368000,
-      refundable: true,
-      handBaggage: '7 Kg',
-      checkInBaggage: true,
-      hasMeal: true,
+      stops: 'Nearby Airport',
+      seatsLeft: '4 seat(s) left',
+      tiers: [
+        { label: 'Publish',   price: 28500, badgeClass: 'pc-tier-label--publish',  checked: true  },
+        { label: 'Flex',      price: 28500, badgeClass: 'pc-tier-label--flex',     checked: false },
+        { label: 'XpressBiz', price: 62415, badgeClass: 'pc-tier-label--xpress',  checked: false },
+      ],
+      price: 28500, totalPrice: 185000, roundTrip: 368000,
+      refundable: true, handBaggage: '7 Kg', checkInBaggage: true, hasMeal: true,
     },
     {
-      id: 6,
+      id: 10,
       type: 'international',
       withFlights: true,
       destination: 'Bangkok',
       stars: 4,
-      airline: 'Thai Airways',
-      flightNo: 'TG 317',
+      airline: 'Air India',
+      flightNo: 'AI 317 TC',
       depTime: '08:15',
       arrTime: '14:30',
-      duration: '4h 15m',
+      duration: '04h 15m',
+      overnight: false,
       depCode: 'HYD',
       arrCode: 'BKK',
-      price: 22000,
-      totalPrice: 145000,
-      roundTrip: 288000,
-      refundable: false,
-      handBaggage: '7 Kg',
-      checkInBaggage: false,
-      hasMeal: true,
-    },
-    {
-      id: 7,
-      type: 'indian',
-      withFlights: false,
-      destination: 'Shimla',
-      stars: 3,
-      airline: null,
-      price: 8500,
-      totalPrice: 65000,
-      roundTrip: null,
-      refundable: false,
-      handBaggage: null,
-      checkInBaggage: false,
-      hasMeal: true,
-    },
-    {
-      id: 8,
-      type: 'international',
-      withFlights: false,
-      destination: 'Maldives',
-      stars: 5,
-      airline: null,
-      price: 55000,
-      totalPrice: 310000,
-      roundTrip: null,
-      refundable: true,
-      handBaggage: null,
-      checkInBaggage: false,
-      hasMeal: true,
+      stops: '1 Stop(s) via DEL - 6 seat(s) left',
+      seatsLeft: null,
+      tiers: [
+        { label: 'SME',     price: 22000, badgeClass: 'pc-tier-label--sme',     checked: true  },
+        { label: 'Publish', price: 48400, badgeClass: 'pc-tier-label--publish', checked: false },
+      ],
+      price: 22000, totalPrice: 145000, roundTrip: 288000,
+      refundable: false, handBaggage: '7 Kg', checkInBaggage: true, hasMeal: true,
     },
   ];
 
@@ -246,94 +334,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fmt = v => `₹${v.toLocaleString('en-IN')}`;
 
-    // Seats note + nearby airport note (static sample values)
-    const seatsNote = pkg.seatsLeft
-      ? `<span class="pc-seats">${pkg.seatsLeft} seat(s) left</span>`
-      : `<span class="pc-seats">9 seat(s) left</span>`;
-    const airportNote = `<span class="pc-airport-note">Nearby Airport</span>`;
+    // Duration with optional +1D overnight tag
+    const durLabel = pkg.overnight
+      ? `<i class="far fa-clock"></i> ${pkg.duration} <span class="pc-overnight">+1D</span>`
+      : `<i class="far fa-clock"></i> ${pkg.duration}`;
+
+    // Stop + seats info below duration line (from data)
+    const stopsHtml = pkg.stops
+      ? `<span class="pc-stops">${pkg.stops}</span>`
+      : '';
+    const seatsHtml = pkg.seatsLeft
+      ? `<span class="pc-seats">${pkg.seatsLeft}</span>`
+      : '';
+
+    // Render tiers from data array (variable count & labels per airline)
+    const tiersHtml = (pkg.tiers || []).map(t => `
+      <label class="pc-tier${t.checked ? ' pc-tier--checked' : ''}">
+        <input type="checkbox" ${t.checked ? 'checked' : ''} />
+        <span class="pc-tier-price">${fmt(t.price)}</span>
+        <span class="pc-tier-label ${t.badgeClass}">${t.label}</span>
+      </label>`).join('');
 
     const flightBlock = pkg.withFlights && pkg.airline ? `
-      <!-- Row 1: Airline info + flight timing -->
       <div class="pc-flight-row">
-
-        <!-- Left: Logo + name + flight number -->
         <div class="pc-airline">
           <div class="pc-logo">
-            <img src="${logoSrc}" alt="${pkg.airline}"
-                 onerror="this.style.display='none'" />
+            <img src="${logoSrc}" alt="${pkg.airline}" onerror="this.style.display='none'" />
           </div>
           <div class="pc-airline-text">
             <span class="pc-airline-name">${pkg.airline}</span>
             <span class="pc-flight-num">${pkg.flightNo || ''}</span>
           </div>
         </div>
-
-        <!-- Departure -->
         <div class="pc-dep">
           <span class="pc-time">${pkg.depTime}</span>
           <span class="pc-code">${pkg.depCode}</span>
         </div>
-
-        <!-- Duration + notes -->
         <div class="pc-duration">
-          <span class="pc-dur-text"><i class="far fa-clock"></i> ${pkg.duration}</span>
+          <span class="pc-dur-text">${durLabel}</span>
           <div class="pc-dur-line"></div>
-          <div class="pc-dur-notes">${seatsNote}${airportNote}</div>
+          <div class="pc-dur-notes">${stopsHtml}${seatsHtml}</div>
         </div>
-
-        <!-- Arrival -->
         <div class="pc-arr">
           <span class="pc-time">${pkg.arrTime}</span>
           <span class="pc-code">${pkg.arrCode}</span>
         </div>
-
       </div>
-
       <hr class="pc-sep" />
-
-      <!-- Row 2: Pricing tiers -->
-      <div class="pc-pricing-row">
-        <label class="pc-tier pc-tier--checked">
-          <input type="checkbox" checked />
-          <span class="pc-tier-price">${fmt(publishPrice)}</span>
-          <span class="pc-tier-label pc-tier-label--publish">Publish</span>
-        </label>
-        <label class="pc-tier">
-          <input type="checkbox" />
-          <span class="pc-tier-price">${fmt(flexPrice)}</span>
-          <span class="pc-tier-label pc-tier-label--flex">Flex</span>
-        </label>
-        <label class="pc-tier">
-          <input type="checkbox" />
-          <span class="pc-tier-price">${fmt(xpressPrice)}</span>
-          <span class="pc-tier-label pc-tier-label--xpress">XpressBiz</span>
-        </label>
-      </div>
-
+      <div class="pc-pricing-row">${tiersHtml}</div>
       <hr class="pc-sep" />
-
-      <!-- Row 3: Baggage / refund / rules -->
       <div class="pc-info-row">
-        <span class="pc-info-item">
-          <i class="fas fa-shopping-bag"></i> Hand Baggage - ${pkg.handBaggage || '7 Kg'}
-        </span>
+        <span class="pc-info-item"><i class="fas fa-shopping-bag"></i> Hand Baggage - ${pkg.handBaggage || '7 Kg'}</span>
         <span class="pc-info-sep">|</span>
-        <span class="pc-info-item">
-          <i class="fas fa-suitcase"></i> Check-In Baggage
-        </span>
+        <span class="pc-info-item"><i class="fas fa-suitcase"></i> Check-In Baggage</span>
         <span class="pc-info-sep">|</span>
         <span class="pc-info-item ${pkg.refundable ? '' : 'pc-non-refund'}">
           <i class="fas fa-${pkg.refundable ? 'undo-alt' : 'times-circle'}"></i>
           ${pkg.refundable ? 'Refundable' : 'Non-Refundable'}
         </span>
         <span class="pc-info-sep">|</span>
-        <span class="pc-info-item pc-rules">
-          <i class="fas fa-info-circle"></i> Rules
-        </span>
+        <span class="pc-info-item pc-rules"><i class="fas fa-info-circle"></i> Rules</span>
       </div>` :
-      `<div class="pc-no-flight">
-         <i class="fas fa-bus"></i> Land package — no flights included
-       </div>`;
+      `<div class="pc-no-flight"><i class="fas fa-bus"></i> Land package — no flights included</div>`;
+
 
     card.innerHTML = flightBlock;
 

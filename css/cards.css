@@ -443,12 +443,13 @@
 }
 
 
-/* --- Package Result Grid — single column list like reference --- */
+/* --- Package Result Grid — 2 column grid like reference --- */
 .packages-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
 }
+
 
 /* --- Individual Package Card --- */
 .package-card {
@@ -649,6 +650,20 @@
 .pc-tier-label--publish  { background: #e8f5e9; color: #2e7d32; }
 .pc-tier-label--flex     { background: #fce4ec; color: #c2185b; }
 .pc-tier-label--xpress   { background: #e8eaf6; color: #3949ab; }
+.pc-tier-label--sme      { background: #fff3e0; color: #e65100; }
+.pc-tier-label--regular  { background: #e0f7fa; color: #00838f; }
+.pc-tier-label--comfort  { background: #fbe9e7; color: #bf360c; }
+
+/* Overnight +1D tag inside duration text */
+.pc-overnight {
+  font-size: 0.62rem;
+  font-weight: 700;
+  background: #e53935;
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 3px;
+  vertical-align: middle;
+}
 
 /* ── Row 3: Baggage / info row ── */
 .pc-info-row {
