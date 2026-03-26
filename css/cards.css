@@ -1,29 +1,85 @@
-/* =============================================
-   cards.css — Package Cards & Flight Rows
-   Holiday Package Booking System
-   ============================================= */
-
-/* --- Search / Filter Bar --- */
+/* Search / Filter Bar — flat container, no shadow */
 .search-bar-card {
   background: var(--card-bg);
   border-radius: var(--border-radius);
-  padding: 20px;
+  padding: 16px 20px;
   border: 1.5px solid var(--border);
-  box-shadow: var(--shadow-sm);
+  /* no box-shadow — keeps it clean and flat */
   margin-bottom: 20px;
 }
 
+/* --- Floating-label field wrapper --- */
+/* Each field shows a small grey label at the top and the input/select below */
+.float-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--border-radius-sm);
+  padding: 8px 12px 8px;
+  background: #fff;
+  cursor: text;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  height: 58px;
+  justify-content: center;
+}
+
+.float-field.focused {
+  border-color: #111111;
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.07);
+}
+
+/* Small grey label sits at top of the field */
+.float-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: none;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* The actual input/select inside a float-field */
+.float-field input,
+.float-field select {
+  border: none;
+  padding: 0;
+  height: auto;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: transparent;
+  box-shadow: none;
+  line-height: 1.4;
+  width: 100%;
+}
+
+.float-field input:focus,
+.float-field select:focus {
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.float-field input::placeholder {
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.92rem;
+}
+
+
 .search-row {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   align-items: flex-end;
   flex-wrap: wrap;
 }
 
+/* Old label-above-input style (kept for other pages if needed) */
 .search-field {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0;
 }
 
 .search-field label {
@@ -34,9 +90,9 @@
   letter-spacing: 0.04em;
 }
 
-.search-field.destination { flex: 2; min-width: 180px; }
-.search-field.date        { flex: 1; min-width: 140px; }
-.search-field.passengers  { flex: 1; min-width: 160px; }
+.search-field.destination { flex: 2.5; min-width: 200px; }
+.search-field.date        { flex: 1;   min-width: 150px; }
+.search-field.passengers  { flex: 1.5; min-width: 180px; }
 
 .search-btn {
   width: 42px;
@@ -58,11 +114,12 @@
   transform: scale(1.05);
 }
 
+/* --- Filter Row (Hotel Standard + Meals) --- */
 .filter-row {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 14px;
+  margin-top: 12px;
   flex-wrap: wrap;
 }
 
@@ -70,6 +127,7 @@
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-muted);
+  white-space: nowrap;
 }
 
 .star-filter-group {
@@ -77,15 +135,17 @@
   gap: 4px;
 }
 
+/* Rectangular star buttons (border-radius: 4px, not pill) */
 .star-btn {
-  padding: 4px 12px;
-  border-radius: 100px;
+  padding: 4px 10px;
+  border-radius: 4px;
   font-size: 0.78rem;
   font-weight: 600;
   border: 1.5px solid #cccccc;
   color: var(--text-secondary);
   background: #ffffff;
   transition: all var(--transition);
+  cursor: pointer;
 }
 
 .star-btn:hover,
@@ -93,6 +153,14 @@
   border-color: #111111;
   background: #111111;
   color: #ffffff;
+}
+
+/* Meal filters group — auto left-margin pushes it away from star buttons */
+.meal-filters {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 .filter-checkbox {
@@ -103,14 +171,30 @@
   font-size: 0.82rem;
   color: var(--text-secondary);
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .filter-checkbox input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   accent-color: #111111;
   cursor: pointer;
 }
+
+/* Info icon button next to meal checkboxes */
+.info-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  padding: 2px;
+  transition: color var(--transition);
+  display: flex;
+  align-items: center;
+}
+
+.info-btn:hover { color: var(--text-primary); }
 
 /* --- Tab Navigation --- */
 .tab-nav {

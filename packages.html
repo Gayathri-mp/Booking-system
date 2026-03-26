@@ -69,18 +69,8 @@
 
     <main class="page-body" id="main" role="main">
 
-      <!-- Page Header -->
-      <div class="page-header">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="index.html">Home</a>
-          <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
-          <span>Packages</span>
-        </nav>
-        <h1>Holiday Packages</h1>
-        <p>Find the perfect holiday — filter by destination, star rating, and flight preference.</p>
-      </div>
-
-      <div class="tab-nav" role="tablist" aria-label="Holiday type">
+      <!-- Holiday Type Tabs — starts the page, no extra heading needed -->
+      <div class="tab-nav" role="tablist" aria-label="Holiday type" style="margin-bottom: 0;">
         <button class="tab-btn type-tab-btn active" data-type="indian" role="tab" aria-selected="true">
           Indian Holidays
         </button>
@@ -99,47 +89,72 @@
         </button>
       </div>
 
-      <!-- Search & Filter Bar -->
+      <!-- Search & Filter — all fields in ONE flat container, no shadow -->
       <div class="search-bar-card" role="search" aria-label="Package search and filters">
         <div class="search-row">
+
+          <!-- Destination: floating label + placeholder "City" -->
           <div class="search-field destination">
-            <label for="destination-input">Destination</label>
-            <input type="text" id="destination-input" placeholder="e.g. Goa, Manali, Dubai…" autocomplete="off" />
+            <div class="float-field" id="dest-field">
+              <span class="float-label">Destination</span>
+              <input type="text" id="destination-input" placeholder="City" autocomplete="off"
+                     onfocus="document.getElementById('dest-field').classList.add('focused')"
+                     onblur="document.getElementById('dest-field').classList.remove('focused')" />
+            </div>
           </div>
+
+          <!-- Trip Start Date -->
           <div class="search-field date">
-            <label for="date-input">Travel Date</label>
-            <input type="date" id="date-input" />
+            <div class="float-field" id="date-field">
+              <span class="float-label">Trip start date</span>
+              <input type="date" id="date-input"
+                     onfocus="document.getElementById('date-field').classList.add('focused')"
+                     onblur="document.getElementById('date-field').classList.remove('focused')" />
+            </div>
           </div>
+
+          <!-- No. of Passengers -->
           <div class="search-field passengers">
-            <label for="passengers-select">Passengers</label>
-            <select id="passengers-select">
-              <option>1 Adult</option>
-              <option selected>2 Adults</option>
-              <option>2 Adults, 1 Child</option>
-              <option>2 Adults, 2 Children</option>
-              <option>4 Adults</option>
-              <option>Group (5+)</option>
-            </select>
+            <div class="float-field" id="pass-field">
+              <span class="float-label">No.of Passengers</span>
+              <select id="passengers-select"
+                      onfocus="document.getElementById('pass-field').classList.add('focused')"
+                      onblur="document.getElementById('pass-field').classList.remove('focused')">
+                <option>1 Adult</option>
+                <option>2 Adults</option>
+                <option>2 Adults, 1 Child</option>
+                <option selected>2 Adults, 2 Children</option>
+                <option>4 Adults</option>
+                <option>Group (5+)</option>
+              </select>
+            </div>
           </div>
+
           <button class="search-btn" id="search-btn" aria-label="Search packages">
             <i class="fas fa-search"></i>
           </button>
         </div>
 
-        <!-- Star rating & meal filters -->
+        <!-- Hotel Standard & Meal Filters -->
         <div class="filter-row">
-          <span class="filter-label">Hotel Standard:</span>
+          <span class="filter-label" style="color:#111; font-weight:700;">Hotel Standard</span>
           <div class="star-filter-group" role="group" aria-label="Filter by star rating">
-            <button class="star-btn" data-stars="3" aria-label="3 star hotels">3★</button>
-            <button class="star-btn" data-stars="4" aria-label="4 star hotels">4★</button>
-            <button class="star-btn" data-stars="5" aria-label="5 star hotels">5★</button>
+            <button class="star-btn" data-stars="3" aria-label="3 star hotels">3 &#9733;</button>
+            <button class="star-btn" data-stars="4" aria-label="4 star hotels">4 &#9733;</button>
+            <button class="star-btn" data-stars="5" aria-label="5 star hotels">5 &#9733;</button>
           </div>
-          <label class="filter-checkbox">
-            <input type="checkbox" id="add-lunch" /> Add Lunch
-          </label>
-          <label class="filter-checkbox">
-            <input type="checkbox" id="add-dinner" /> Add Dinner
-          </label>
+          <!-- Push meal options toward center with auto left-margin -->
+          <div class="meal-filters">
+            <label class="filter-checkbox">
+              <input type="checkbox" id="add-lunch" /> Add Lunch
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" id="add-dinner" /> Add Dinner
+            </label>
+            <button class="info-btn" title="Meals are served at the hotel. Subject to availability." aria-label="Meal info">
+              <i class="fas fa-info-circle"></i>
+            </button>
+          </div>
         </div>
       </div>
 
