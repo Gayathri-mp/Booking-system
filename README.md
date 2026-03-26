@@ -24,23 +24,6 @@ Booking System/
 └── .gitignore
 ```
 
-## 🖼️ Adding Images
-
-Drop your image files inside `assets/images/` and reference them like:
-```html
-<img src="assets/images/your-image.jpg" alt="Description">
-```
-
-## 🚀 Running the Project
-
-Just open `index.html` in your browser — no server required!
-
-## ☁️ Deployment
-
-**Vercel:** Push to GitHub → Import repo on [vercel.com](https://vercel.com) → Deploy (zero config for static sites).
-
-**InfinityFree:** Upload all files into the `htdocs/` folder via File Manager or FTP.
-
 ## 🛠️ Tech Stack
 
 - HTML5
