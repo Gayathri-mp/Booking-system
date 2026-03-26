@@ -235,28 +235,92 @@
         </div>
       </div>
 
-      <!-- Route Info (static display) -->
+      <!-- Route Info Bar — 3 sections matching reference -->
       <div class="route-info-bar" role="region" aria-label="Selected route">
-        <div class="route-point">
-          <span class="route-label">From</span>
-          <span class="route-value">Rajiv Gandhi International Airport (HYD), Hyderabad, India</span>
-        </div>
-        <span class="route-arrow"><i class="fas fa-arrow-right"></i></span>
-        <div class="route-point">
-          <span class="route-label">To</span>
-          <span class="route-value">Your selected destination</span>
-        </div>
-        <div style="margin-left:auto; display:flex; gap:16px; align-items:center;">
-          <div class="route-point">
-            <span class="route-label">Departure</span>
-            <span class="route-value">Tue, Mar 12</span>
+
+        <!-- Section 1: Airport fields row (floating-label style) -->
+        <div class="rib-fields-row">
+          <!-- From airport -->
+          <div class="rib-field rib-field-from">
+            <span class="rib-label">From</span>
+            <span class="rib-value">Rajiv Gandhi International Airport (HYD), Hyderabad, India</span>
           </div>
-          <div class="route-point">
-            <span class="route-label">Return</span>
-            <span class="route-value">Sun, Mar 17</span>
+          <!-- Swap icon -->
+          <button class="rib-swap-btn" title="Swap airports" aria-label="Swap airports">
+            <i class="fas fa-exchange-alt"></i>
+          </button>
+          <!-- Departure date -->
+          <div class="rib-field rib-field-date">
+            <span class="rib-label">Departure Date</span>
+            <span class="rib-value">Tue, Mar 12, 2025</span>
+          </div>
+          <div class="rib-sep"></div>
+          <!-- To airport -->
+          <div class="rib-field rib-field-to">
+            <span class="rib-label">To</span>
+            <span class="rib-value">Mopa Airport India (GOX), Goa, India</span>
+          </div>
+          <div class="rib-sep"></div>
+          <!-- Return date -->
+          <div class="rib-field rib-field-date">
+            <span class="rib-label">Return Date</span>
+            <span class="rib-value">Sun, Mar 17, 2025</span>
           </div>
         </div>
+
+        <!-- Section 2: Flight summary strip (dark-blue gradient) -->
+        <div class="rib-flight-strip">
+          <!-- Departure segment -->
+          <div class="rib-flight-seg">
+            <div class="rib-flight-header">Departure &middot; Air India</div>
+            <div class="rib-flight-body">
+              <span class="rib-times">11:30 <i class="fas fa-arrow-right rib-arr"></i> 18:55</span>
+              <span class="rib-price">&#8377;1,05,300.00</span>
+            </div>
+          </div>
+          <div class="rib-flight-divider"></div>
+          <!-- Return segment -->
+          <div class="rib-flight-seg">
+            <div class="rib-flight-header">Return &middot; Air India</div>
+            <div class="rib-flight-body">
+              <span class="rib-times">00:50 <i class="fas fa-arrow-right rib-arr"></i> 01:55</span>
+              <span class="rib-price">&#8377;1,05,300.00</span>
+            </div>
+          </div>
+          <div class="rib-flight-divider"></div>
+          <!-- Total / pax -->
+          <div class="rib-flight-seg rib-total-seg">
+            <div class="rib-flight-header rib-pax">for 2 adult, 2 children</div>
+            <div class="rib-flight-body">
+              <span class="rib-total-label">Total Round fare</span>
+              <span class="rib-total-price">&#8377;2,10,600.00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: Outbound column headers -->
+        <div class="rib-cols-row">
+          <div class="rib-col-group">
+            <span class="rib-col-title">Outbound: Hyderabad (HYD)</span>
+            <span class="rib-col-head">Departure</span>
+            <span class="rib-col-sep"></span>
+            <span class="rib-col-head">Duration</span>
+            <span class="rib-col-sep"></span>
+            <span class="rib-col-head">Arrival</span>
+          </div>
+          <div class="rib-col-mid-sep"></div>
+          <div class="rib-col-group">
+            <span class="rib-col-title">Outbound: Hyderabad (HYD)</span>
+            <span class="rib-col-head">Departure</span>
+            <span class="rib-col-sep"></span>
+            <span class="rib-col-head">Duration</span>
+            <span class="rib-col-sep"></span>
+            <span class="rib-col-head">Arrival</span>
+          </div>
+        </div>
+
       </div>
+
 
       <!-- Results Grid — populated by packages.js -->
       <div class="packages-grid" id="packages-grid" role="list" aria-label="Package results" aria-live="polite">
