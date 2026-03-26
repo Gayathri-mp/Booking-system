@@ -253,9 +253,9 @@
   border-bottom-color: #111111;
 }
 
-/* =============================================
+/* 
    Route Info Bar — 3 sections
-   ============================================= */
+    */
 .route-info-bar {
   background: var(--card-bg);
   border-radius: var(--border-radius);
