@@ -1,10 +1,9 @@
-/* Search / Filter Bar — flat container, no shadow */
+/* Search / Filter Bar — plain white, no border, no shadow */
 .search-bar-card {
-  background: var(--card-bg);
+  background: #ffffff;
   border-radius: var(--border-radius);
   padding: 16px 20px;
-  border: 1.5px solid var(--border);
-  /* no box-shadow — keeps it clean and flat */
+  border: none;
   margin-bottom: 20px;
 }
 
@@ -155,11 +154,12 @@
   color: #ffffff;
 }
 
-/* Meal filters group — auto left-margin pushes it away from star buttons */
+/* Meal filters group — centered in the remaining space */
 .meal-filters {
-  margin-left: auto;
+  flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 14px;
 }
 
@@ -200,11 +200,11 @@
 .tab-nav {
   display: flex;
   gap: 0;
-  background: var(--page-bg);
-  border-radius: var(--border-radius);
-  padding: 4px;
+  /* no background, border or shadow — tabs float freely */
+  background: transparent;
+  border: none;
+  padding: 0;
   margin-bottom: 16px;
-  border: 1.5px solid var(--border);
   width: fit-content;
 }
 
@@ -232,6 +232,7 @@
 .sub-tab-nav {
   display: flex;
   border-bottom: 2px solid var(--border);
+  margin-top: 20px;    /* gap from the type-toggle above */
   margin-bottom: 20px;
 }
 
