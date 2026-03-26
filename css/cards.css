@@ -586,12 +586,21 @@
   gap: 1px;
 }
 
+/* Seat availability note — shown in red below the duration line */
 .pc-seats {
   font-size: 0.68rem;
   color: #e53935;
   font-weight: 600;
 }
 
+/* Stop information (e.g. "1 Stop via BOM") — shown below duration line */
+.pc-stops {
+  font-size: 0.68rem;
+  color: #e53935;
+  font-weight: 500;
+}
+
+/* Airport note (e.g. "Nearby Airport") — shown in blue below duration line */
 .pc-airport-note {
   font-size: 0.65rem;
   color: #2563eb;
@@ -607,14 +616,13 @@
   gap: 8px;
 }
 
-/* ── Row 2: Pricing tiers ── */
+/* Row 2: Pricing tier row */
 .pc-pricing-row {
   display: flex;
   align-items: center;
-  gap: 0;
-  padding: 10px 16px;
   flex-wrap: wrap;
   gap: 16px;
+  padding: 10px 16px;
 }
 
 .pc-tier {
@@ -665,15 +673,14 @@
   vertical-align: middle;
 }
 
-/* ── Row 3: Baggage / info row ── */
+/* Row 3: Baggage, refund & rules info strip */
 .pc-info-row {
   display: flex;
   align-items: center;
-  gap: 0;
-  padding: 8px 16px;
-  background: var(--page-bg);
   flex-wrap: wrap;
   gap: 4px;
+  padding: 8px 16px;
+  background: var(--page-bg);
 }
 
 .pc-info-item {
@@ -701,221 +708,8 @@
 .pc-rules:hover { text-decoration: underline; }
 
 
-/* --- Individual Package Card --- */
-.package-card {
-  background: var(--card-bg);
-  border: 1.5px solid var(--border);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition), transform var(--transition);
-  cursor: pointer;
-}
+/* --- No Results / Empty State --- */
 
-.package-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-  border-color: var(--primary);
-}
-
-/* Price summary bar at the top of each card */
-.card-price-bar {
-  background: #1a1a1a;
-  color: #fff;
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.82rem;
-}
-
-.card-price-bar .trip-label {
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.card-price-bar .trip-times {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 700;
-  font-size: 0.92rem;
-}
-
-.card-price-bar .trip-times .arrow { opacity: 0.7; }
-
-.card-price-bar .trip-price {
-  font-weight: 700;
-  font-size: 0.95rem;
-}
-
-.card-price-bar .total-price {
-  font-weight: 700;
-  font-size: 1rem;
-}
-
-/* Flight rows inside a card */
-.flight-rows {
-  padding: 8px 0;
-}
-
-.flight-row {
-  display: flex;
-  align-items: center;
-  padding: 10px 16px;
-  border-bottom: 1px solid var(--page-bg);
-  gap: 10px;
-  transition: background var(--transition);
-}
-
-.flight-row:last-child { border-bottom: none; }
-.flight-row:hover { background: var(--page-bg); }
-
-/* Airline Logo */
-.airline-logo {
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
-  overflow: hidden;
-  flex-shrink: 0;
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  background: var(--page-bg);
-}
-
-.airline-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* Airline Info */
-.airline-info {
-  flex: 1.2;
-  min-width: 0;
-}
-
-.airline-name {
-  font-size: 0.83rem;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.flight-number {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-}
-
-/* Time display */
-.flight-times {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 2;
-}
-
-.flight-time {
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.flight-duration {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  text-align: center;
-  flex: 1;
-  padding: 0 4px;
-}
-
-.flight-duration .duration-line {
-  height: 1px;
-  background: var(--border);
-  position: relative;
-  margin: 3px 0;
-}
-
-.flight-duration .duration-line::after {
-  content: '✈';
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.6rem;
-  background: #fff;
-  padding: 0 2px;
-  color: var(--primary);
-}
-
-/* Price section in flight row */
-.flight-price {
-  text-align: right;
-  flex-shrink: 0;
-}
-
-.price-main {
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.price-tag {
-  display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 600;
-  padding: 1px 5px;
-  border-radius: 3px;
-  margin-top: 2px;
-}
-
-.price-tag.yellow { background: #fef9c3; color: #92400e; }
-.price-tag.green  { background: var(--success-light); color: #065f46; }
-.price-tag.blue   { background: var(--primary-light); color: var(--primary); }
-
-/* Baggage / amenity badges */
-.flight-badges {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding: 6px 16px 10px 58px;
-}
-
-.badge-item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.72rem;
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-
-.badge-item i { color: #555555; font-size: 0.75rem; }
-
-/* Card Footer / Book Now */
-.card-footer {
-  padding: 12px 16px;
-  border-top: 1.5px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--page-bg);
-}
-
-.total-label { font-size: 0.8rem; color: var(--text-muted); }
-.total-price { font-size: 1.1rem; font-weight: 700; color: #111111; }
-.total-sub   { font-size: 0.72rem; color: var(--text-muted); }
-
-/* --- No Results State --- */
 .empty-state {
   text-align: center;
   padding: 60px 20px;

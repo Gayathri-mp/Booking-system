@@ -309,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Maps airline names to the exact image files the user dropped into assets/images/
+  // Lookup table: airline display name → image file in assets/images/
   const airlineLogoMap = {
     'Air India Express': 'assets/images/air_india_express.png',
     'Air India':         'assets/images/air_india.png',
@@ -327,12 +327,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const logoSrc = pkg.airline ? (airlineLogoMap[pkg.airline] || '') : '';
 
-    // Pricing tiers based on base price
-    const publishPrice  = pkg.price;
-    const flexPrice     = pkg.price;                         // same tier in sample data
-    const xpressPrice   = Math.round(pkg.price * 2.19);     // approx XpressBiz markup
-
     const fmt = v => `₹${v.toLocaleString('en-IN')}`;
+
 
     // Duration with optional +1D overnight tag
     const durLabel = pkg.overnight
