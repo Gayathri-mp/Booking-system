@@ -221,103 +221,125 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Maps each airline name to its logo image file.
-  // Place the files in assets/images/ using the filenames below.
+  // Maps airline names to the exact image files the user dropped into assets/images/
   const airlineLogoMap = {
-    'Air India Express': 'assets/images/air-india-express.png',
-    'Air India':         'assets/images/air-india.png',
-    'Indigo':            'assets/images/indigo.png',
-    'Star Air':          'assets/images/star-air.png',
+    'Air India Express': 'assets/images/air_india_express.png',
+    'Air India':         'assets/images/air_india.png',
+    'Indigo':            'assets/images/indigo.jpg',
+    'Star Air':          'assets/images/star_air.jpg',
     'Emirates':          'assets/images/emirates.png',
     'Thai Airways':      'assets/images/thai-airways.png',
   };
 
-  // Builds a single package card DOM element
+  // Builds a single package card DOM element matching the reference design
   function createPackageCard(pkg) {
     const card = document.createElement('div');
     card.className = 'package-card';
-    card.setAttribute('role', 'button');
-    card.setAttribute('aria-label', `View ${pkg.destination} package`);
+    card.setAttribute('role', 'listitem');
 
-    const totalDisplay = pkg.roundTrip
-      ? `₹${pkg.roundTrip.toLocaleString('en-IN')}`
-      : `₹${pkg.totalPrice.toLocaleString('en-IN')}`;
-
-    // Get airline logo path from map, fall back gracefully if not found
     const logoSrc = pkg.airline ? (airlineLogoMap[pkg.airline] || '') : '';
-    const airlineLogoHtml = logoSrc
-      ? `<img src="${logoSrc}" alt="${pkg.airline} logo"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-          <span style="display:none; width:100%; height:100%; align-items:center; justify-content:center;">
-            <i class="fas fa-plane" style="font-size:0.8rem; color:#999;"></i>
-          </span>`
-      : `<i class="fas fa-plane" style="font-size:0.8rem; color:#999;"></i>`;
 
-    // Stars as text (e.g. "4 Star")
-    const starLabel = pkg.stars ? `${pkg.stars} Star` : '';
+    // Pricing tiers based on base price
+    const publishPrice  = pkg.price;
+    const flexPrice     = pkg.price;                         // same tier in sample data
+    const xpressPrice   = Math.round(pkg.price * 2.19);     // approx XpressBiz markup
 
-    const flightSection = pkg.withFlights && pkg.airline ? `
-      <div class="flight-row">
-        <div class="airline-logo">${airlineLogoHtml}</div>
-        <div class="airline-info">
-          <div class="airline-name">${pkg.airline}</div>
-          <div class="flight-number">${pkg.flightNo || ''}</div>
-        </div>
-        <div class="flight-times">
-          <span class="flight-time">${pkg.depTime}</span>
-          <div class="flight-duration">
-            <span>${pkg.duration}</span>
-            <div class="duration-line"></div>
+    const fmt = v => `₹${v.toLocaleString('en-IN')}`;
+
+    // Seats note + nearby airport note (static sample values)
+    const seatsNote = pkg.seatsLeft
+      ? `<span class="pc-seats">${pkg.seatsLeft} seat(s) left</span>`
+      : `<span class="pc-seats">9 seat(s) left</span>`;
+    const airportNote = `<span class="pc-airport-note">Nearby Airport</span>`;
+
+    const flightBlock = pkg.withFlights && pkg.airline ? `
+      <!-- Row 1: Airline info + flight timing -->
+      <div class="pc-flight-row">
+
+        <!-- Left: Logo + name + flight number -->
+        <div class="pc-airline">
+          <div class="pc-logo">
+            <img src="${logoSrc}" alt="${pkg.airline}"
+                 onerror="this.style.display='none'" />
           </div>
-          <span class="flight-time">${pkg.arrTime}</span>
+          <div class="pc-airline-text">
+            <span class="pc-airline-name">${pkg.airline}</span>
+            <span class="pc-flight-num">${pkg.flightNo || ''}</span>
+          </div>
         </div>
-        <div class="flight-price">
-          <div class="price-main">₹${pkg.price.toLocaleString('en-IN')}</div>
-          <div class="price-tag yellow">SALE</div>
-        </div>
-      </div>
-      <div class="flight-badges">
-        ${pkg.handBaggage   ? `<span class="badge-item"><i class="fas fa-suitcase"></i> Hand Baggage - ${pkg.handBaggage}</span>` : ''}
-        ${pkg.checkInBaggage ? `<span class="badge-item"><i class="fas fa-check-circle"></i> Check-in Baggage</span>` : ''}
-        ${pkg.refundable     ? `<span class="badge-item"><i class="fas fa-undo"></i> Refundable</span>`
-                             : `<span class="badge-item text-danger"><i class="fas fa-times-circle"></i> Non-Refundable</span>`}
-        ${pkg.hasMeal        ? `<span class="badge-item"><i class="fas fa-utensils"></i> Meal Included</span>` : ''}
-      </div>` : `
-      <div style="padding: 16px; color: var(--text-muted); font-size: 0.87rem;">
-        <i class="fas fa-bus" style="margin-right:6px;"></i> Land package - no flights included
-      </div>`;
 
-    card.innerHTML = `
-      <div class="card-price-bar">
-        <div class="trip-label">
-          <i class="fas fa-map-marker-alt" style="margin-right:4px;"></i>${pkg.destination}&nbsp;&nbsp;
-          ${starLabel}
+        <!-- Departure -->
+        <div class="pc-dep">
+          <span class="pc-time">${pkg.depTime}</span>
+          <span class="pc-code">${pkg.depCode}</span>
         </div>
-        <div class="trip-price">From ₹${pkg.totalPrice.toLocaleString('en-IN')}</div>
-        ${pkg.roundTrip ? `<div class="total-price">Round Trip ${totalDisplay}</div>` : ''}
-      </div>
-      <div class="flight-rows">
-        ${flightSection}
-      </div>
-      <div class="card-footer">
-        <div>
-          <div class="total-label">Total Package Price</div>
-          <div class="total-price">₹${pkg.totalPrice.toLocaleString('en-IN')}</div>
-          <div class="total-sub">Per person (taxes incl.)</div>
+
+        <!-- Duration + notes -->
+        <div class="pc-duration">
+          <span class="pc-dur-text"><i class="far fa-clock"></i> ${pkg.duration}</span>
+          <div class="pc-dur-line"></div>
+          <div class="pc-dur-notes">${seatsNote}${airportNote}</div>
         </div>
-        <button class="btn-solid book-btn" data-id="${pkg.id}">Book Now</button>
-      </div>`;
 
-    // Navigate to booking page when "Book Now" is clicked
-    card.querySelector('.book-btn').addEventListener('click', (e) => {
-      e.stopPropagation();
-      // Save selected package info to sessionStorage for the booking page
-      sessionStorage.setItem('selectedPackage', JSON.stringify(pkg));
-      window.location.href = 'booking.html';
-    });
+        <!-- Arrival -->
+        <div class="pc-arr">
+          <span class="pc-time">${pkg.arrTime}</span>
+          <span class="pc-code">${pkg.arrCode}</span>
+        </div>
 
-    // Also navigate if the card itself is clicked
-    card.addEventListener('click', () => {
+      </div>
+
+      <hr class="pc-sep" />
+
+      <!-- Row 2: Pricing tiers -->
+      <div class="pc-pricing-row">
+        <label class="pc-tier pc-tier--checked">
+          <input type="checkbox" checked />
+          <span class="pc-tier-price">${fmt(publishPrice)}</span>
+          <span class="pc-tier-label pc-tier-label--publish">Publish</span>
+        </label>
+        <label class="pc-tier">
+          <input type="checkbox" />
+          <span class="pc-tier-price">${fmt(flexPrice)}</span>
+          <span class="pc-tier-label pc-tier-label--flex">Flex</span>
+        </label>
+        <label class="pc-tier">
+          <input type="checkbox" />
+          <span class="pc-tier-price">${fmt(xpressPrice)}</span>
+          <span class="pc-tier-label pc-tier-label--xpress">XpressBiz</span>
+        </label>
+      </div>
+
+      <hr class="pc-sep" />
+
+      <!-- Row 3: Baggage / refund / rules -->
+      <div class="pc-info-row">
+        <span class="pc-info-item">
+          <i class="fas fa-shopping-bag"></i> Hand Baggage - ${pkg.handBaggage || '7 Kg'}
+        </span>
+        <span class="pc-info-sep">|</span>
+        <span class="pc-info-item">
+          <i class="fas fa-suitcase"></i> Check-In Baggage
+        </span>
+        <span class="pc-info-sep">|</span>
+        <span class="pc-info-item ${pkg.refundable ? '' : 'pc-non-refund'}">
+          <i class="fas fa-${pkg.refundable ? 'undo-alt' : 'times-circle'}"></i>
+          ${pkg.refundable ? 'Refundable' : 'Non-Refundable'}
+        </span>
+        <span class="pc-info-sep">|</span>
+        <span class="pc-info-item pc-rules">
+          <i class="fas fa-info-circle"></i> Rules
+        </span>
+      </div>` :
+      `<div class="pc-no-flight">
+         <i class="fas fa-bus"></i> Land package — no flights included
+       </div>`;
+
+    card.innerHTML = flightBlock;
+
+    // Book Now click stores package and navigates
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('input, label')) return; // let checkboxes work normally
       sessionStorage.setItem('selectedPackage', JSON.stringify(pkg));
       window.location.href = 'booking.html';
     });
@@ -326,6 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---- Event Listeners ----
+
 
   // Holiday type tabs (Indian / International)
   typeTabs.forEach(btn => {
