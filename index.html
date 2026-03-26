@@ -22,18 +22,15 @@
   <!-- ===== SIDEBAR ===== -->
   <aside class="sidebar" id="sidebar" aria-label="Main navigation">
     
-    <!-- Logo -->
     <div class="sidebar-logo">
-      <!--
-        📂 IMAGE SLOT: Replace the fallback below with your logo image.
-        Steps:
-          1. Drop your logo file into: assets/images/logo.png
-          2. Remove the <div class="logo-fallback"> element
-          3. Uncomment the <img> tag below
-      -->
-      <!-- <img src="assets/images/logo.png" alt="HolidayBook logo" /> -->
-      <div class="logo-fallback">H</div>
-      <span class="logo-text">Holiday<span>Book</span></span>
+      <div class="sidebar-logo-left">
+        <img src="assets/images/logo.png" alt="HolidayBook"
+             onerror="this.style.display='none'" />
+
+      </div>
+      <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" aria-label="Collapse sidebar">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
 
     <!-- Navigation -->
