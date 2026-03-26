@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (pkg) {
     if (summaryDestEl)  summaryDestEl.textContent  = pkg.destination  || '—';
-    if (summaryStarsEl) summaryStarsEl.textContent = '⭐'.repeat(pkg.stars || 0);
+    if (summaryStarsEl) summaryStarsEl.textContent = '★'.repeat(pkg.stars || 0);
     if (summaryTypeEl)  summaryTypeEl.textContent  = pkg.type === 'international' ? 'International' : 'Indian';
     if (summaryPriceEl) summaryPriceEl.textContent = `₹${(pkg.price || 0).toLocaleString('en-IN')}`;
     if (summaryTotalEl) summaryTotalEl.textContent = `₹${(pkg.totalPrice || 0).toLocaleString('en-IN')}`;

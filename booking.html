@@ -271,18 +271,18 @@
           <div class="booking-form-card step-panel hidden" data-step="3">
 
             <div class="form-section-title">Payment Details</div>
-            <p class="text-muted text-sm mb-16">Your payment is secured with 256-bit SSL encryption. 🔒</p>
+            <p class="text-muted text-sm mb-16"><i class="fas fa-lock" style="margin-right:4px;"></i>Your payment is secured with 256-bit SSL encryption.</p>
 
             <!-- Payment method selector -->
             <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
               <label style="display:flex; align-items:center; gap:8px; padding:10px 16px; border:1.5px solid var(--primary); border-radius:var(--border-radius-sm); cursor:pointer; background:var(--primary-light); font-size:0.87rem; font-weight:600;">
-                <input type="radio" name="payment-method" value="card" checked /> 💳 Credit / Debit Card
+                <input type="radio" name="payment-method" value="card" checked /> <i class="fas fa-credit-card"></i> Credit / Debit Card
               </label>
               <label style="display:flex; align-items:center; gap:8px; padding:10px 16px; border:1.5px solid var(--border); border-radius:var(--border-radius-sm); cursor:pointer; font-size:0.87rem; font-weight:600;">
-                <input type="radio" name="payment-method" value="upi" /> 📱 UPI
+                <input type="radio" name="payment-method" value="upi" /> <i class="fas fa-mobile-alt"></i> UPI
               </label>
               <label style="display:flex; align-items:center; gap:8px; padding:10px 16px; border:1.5px solid var(--border); border-radius:var(--border-radius-sm); cursor:pointer; font-size:0.87rem; font-weight:600;">
-                <input type="radio" name="payment-method" value="netbanking" /> 🏦 Net Banking
+                <input type="radio" name="payment-method" value="netbanking" /> <i class="fas fa-university"></i> Net Banking
               </label>
             </div>
 
@@ -326,7 +326,7 @@
 
         <!-- ===== BOOKING SUMMARY SIDEBAR ===== -->
         <aside class="booking-summary-card" aria-label="Booking summary">
-          <h3>📋 Booking Summary</h3>
+          <h3><i class="fas fa-clipboard-list" style="margin-right:8px; font-size:0.95rem;"></i>Booking Summary</h3>
           <div class="summary-row">
             <span class="label">Destination</span>
             <span class="value" id="sum-destination">—</span>
@@ -365,10 +365,10 @@
           <div style="margin-top: 20px; padding-top: 16px; border-top: 1.5px solid var(--border);">
             <p class="text-muted text-sm" style="margin-bottom: 10px; text-align: center;">Why book with us?</p>
             <div style="display: flex; flex-direction: column; gap: 8px;">
-              <div class="flex-center gap-8 text-sm"><span>✅</span> Free cancellation (T&C apply)</div>
-              <div class="flex-center gap-8 text-sm"><span>🔒</span> Secure payment gateway</div>
-              <div class="flex-center gap-8 text-sm"><span>📞</span> 24/7 customer support</div>
-              <div class="flex-center gap-8 text-sm"><span>💰</span> Best price guarantee</div>
+              <div class="flex-center gap-8 text-sm"><i class="fas fa-check-circle" style="color:var(--success);"></i> Free cancellation (T&C apply)</div>
+              <div class="flex-center gap-8 text-sm"><i class="fas fa-lock" style="color:var(--text-muted);"></i> Secure payment gateway</div>
+              <div class="flex-center gap-8 text-sm"><i class="fas fa-phone-alt" style="color:var(--text-muted);"></i> 24/7 customer support</div>
+              <div class="flex-center gap-8 text-sm"><i class="fas fa-tag" style="color:var(--text-muted);"></i> Best price guarantee</div>
             </div>
           </div>
 
@@ -386,7 +386,9 @@
 <!-- ===== BOOKING CONFIRMATION MODAL ===== -->
 <div class="modal-overlay" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
   <div class="modal-box">
-    <div class="modal-icon">🎉</div>
+    <div class="modal-icon" style="color: var(--success); font-size: 2.5rem;">
+      <i class="fas fa-check-circle"></i>
+    </div>
     <h3 id="modal-title">Booking Confirmed!</h3>
     <p>Your holiday package has been successfully booked. A confirmation email will be sent to your registered email address.</p>
     <div class="modal-ref" aria-label="Booking reference number">

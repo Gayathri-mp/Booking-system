@@ -325,7 +325,7 @@
 .rib-flight-strip {
   display: flex;
   align-items: stretch;
-  background: linear-gradient(90deg, #1e3a6e 0%, #2563eb 60%, #3b82f6 100%);
+  background: linear-gradient(90deg, #12213d 0%, #2d2d80 60%, #3f5982 100%);
   color: #fff;
   min-height: 56px;
 }
