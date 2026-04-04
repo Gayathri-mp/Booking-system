@@ -1,4 +1,5 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
+
 import { useState, useRef, useEffect } from 'react';
 import { useAuth } from '../authContext';
 
@@ -195,15 +196,16 @@ export default function Navbar() {
             </div>
             <div className="nb-divider"></div>
             {[
-              { icon: 'fa-user',        label: 'My Profile'       },
-              { icon: 'fa-cog',         label: 'Account Settings' },
-              { icon: 'fa-ticket-alt',  label: 'My Bookings'      },
-              { icon: 'fa-bell',        label: 'Notifications'    },
+              { icon: 'fa-user',        label: 'My Profile',       to: '/profile' },
+              { icon: 'fa-cog',         label: 'Account Settings', to: '#' },
+              { icon: 'fa-ticket-alt',  label: 'My Bookings',      to: '#' },
+              { icon: 'fa-bell',        label: 'Notifications',    to: '#' },
             ].map(item => (
-              <button key={item.label} className="nb-profile-item">
+              <Link key={item.label} to={item.to} className="nb-profile-item" onClick={() => setOpenPanel(null)}>
                 <i className={`fas ${item.icon}`}></i> {item.label}
-              </button>
+              </Link>
             ))}
+
             <div className="nb-divider"></div>
             <button className="nb-profile-item nb-profile-logout" onClick={() => { logout(); navigate('/login'); }}>
               <i className="fas fa-sign-out-alt"></i> Sign Out
