@@ -16,13 +16,42 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const bookings = await Booking.find()
-      .populate('packageId', 'destination airline')
+      .populate('packageId', 'destination airline totalPrice')
       .sort({ createdAt: -1 });
     res.json(bookings);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
+
+// GET /api/bookings/stats — analytics for dashboard
+router.get('/stats', async (req, res) => {
+  try {
+    const totalBookings = await Booking.countDocuments();
+    
+    // Calculate total revenue from confirmed bookings
+    const aggregate = await Booking.aggregate([
+      { $match: { status: 'confirmed' } },
+      { $lookup: { from: 'packages', localField: 'packageId', foreignField: '_id', as: 'pkg' } },
+      { $unwind: '$pkg' },
+      { $group: { _id: null, totalRevenue: { $sum: '$pkg.totalPrice' } } }
+    ]);
+    
+    const totalRevenue = aggregate.length > 0 ? aggregate[0].totalRevenue : 0;
+    const activePackages = await require('../models/Package').countDocuments();
+    const avgRating = 4.8; // Logic would come from a Review model if implemented
+
+    res.json({
+      totalBookings,
+      totalRevenue,
+      activePackages,
+      avgRating
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 
 // GET /api/bookings/:ref — get booking by reference
 router.get('/:ref', async (req, res) => {
