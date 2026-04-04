@@ -13,6 +13,8 @@ app.use(express.json());
 app.use('/api/packages', require('./routes/packages'));
 app.use('/api/bookings', require('./routes/bookings'));
 app.use('/api/contact',  require('./routes/contact'));
+app.use('/api/auth',     require('./routes/auth'));
+
 
 // Health check
 app.get('/api/health', (_req, res) => res.json({ status: 'ok' }));
