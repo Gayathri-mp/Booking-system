@@ -14,9 +14,10 @@ export default function Dashboard({ showToast }) {
     const fetchData = async () => {
       try {
         const [statsRes, bookingsRes] = await Promise.all([
-          api.get('/api/bookings/stats'),
-          api.get('/api/bookings')
+          api.get('/bookings/stats'),
+          api.get('/bookings')
         ]);
+
         setStats(statsRes.data);
         setBookings(bookingsRes.data.slice(0, 5));
       } catch (err) {
@@ -54,8 +55,9 @@ export default function Dashboard({ showToast }) {
           <span>Dashboard</span>
         </nav>
         <h1>Dashboard</h1>
-        <p>Welcome back, {user?.name || 'Gayathri'}! Here's what's happening today.</p>
+        <p>Welcome back, {user?.name}! Here's what's happening today.</p>
       </div>
+
 
       {/* Hero Banner */}
       <div className="hero-banner" role="region" aria-label="Promotional banner">
