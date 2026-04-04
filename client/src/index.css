@@ -552,29 +552,52 @@ input:focus, select:focus, textarea:focus {
   .search-bar-card { flex-direction: column; align-items: stretch; }
 }
 
-/* ── Smart Trip Score Badge (Unique Feature) ──────── */
-.trip-score-badge {
+/* ── Smart Trip Score Banner (Unique Feature) ──────── */
+.tsb-strip {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 4px;
-  pointer-events: none; /* don't interfere with card click */
+  gap: 12px;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all var(--transition);
 }
 
-.trip-score-ring {
-  display: block;
-  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.15));
-}
-
-.trip-score-label {
-  font-size: 0.62rem;
-  font-weight: 700;
-  padding: 2px 7px;
-  border-radius: 20px;
-  letter-spacing: 0.03em;
+.tsb-label {
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.72rem;
   text-transform: uppercase;
+  letter-spacing: 0.02em;
   white-space: nowrap;
 }
+
+.tsb-bar-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(0,0,0,0.06);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.tsb-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tsb-score {
+  font-size: 0.95rem;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace; /* fallback to Inter if not available */
+  min-width: 45px;
+  text-align: right;
+}
+
 
 /* ── Payment UI ──────────────────────────────────────── */
 .pay-tabs {

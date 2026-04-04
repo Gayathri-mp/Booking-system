@@ -1,77 +1,49 @@
 /**
- * TripScoreBadge.jsx — Unique Smart Trip Score Component
- *
- * Displays an animated circular progress ring showing the package's
- * server-computed tripScore (0-100). The colour + label change based on
- * the score tier returned by the scorer middleware.
- *
- * Score tiers (from server/middleware/scorer.js):
- *   ≥75 → Top Pick   (green)
- *   ≥55 → Trending   (pink)
- *   ≥35 → Best Value (blue)
- *   <35  → no badge shown
+ * TripScoreBadge — Smart Trip Score Engine (Unique Feature)
+ * Renders a compact banner strip at the TOP of a package card.
+ * Shows score (0–100) as a horizontal progress bar + tier label.
+ * Never overlaps card content — it's part of the normal layout flow.
  */
-import { useEffect, useRef } from 'react';
 
-export default function TripScoreBadge({ tripScore, tripBadge }) {
-  const circleRef = useRef(null);
+const TIERS = [
+  { min: 75, label: '🏆 Top Pick',     color: '#2d7a4f', bg: '#edfdf4', bar: '#2d7a4f' },
+  { min: 55, label: '⭐ Great Value',  color: '#1e6fbf', bg: '#eff6ff', bar: '#2563eb' },
+  { min: 35, label: '👍 Recommended', color: '#b45309', bg: '#fffbeb', bar: '#f59e0b' },
+  { min: 0,  label: null,             color: null,      bg: null,      bar: null       },
+];
 
-  // Animate the stroke-dashoffset on mount (draws the ring from 0 to score%)
-  useEffect(() => {
-    if (!circleRef.current || tripScore == null) return;
-    const circumference = 2 * Math.PI * 18; // r=18
-    const offset = circumference - (tripScore / 100) * circumference;
+function getTier(score) {
+  return TIERS.find(t => score >= t.min);
+}
 
-    // Start fully hidden, then animate to the correct offset
-    circleRef.current.style.strokeDasharray  = `${circumference}`;
-    circleRef.current.style.strokeDashoffset = `${circumference}`;
-    requestAnimationFrame(() => {
-      circleRef.current.style.transition      = 'stroke-dashoffset 1s ease';
-      circleRef.current.style.strokeDashoffset = `${offset}`;
-    });
-  }, [tripScore]);
-
-  if (tripScore == null || !tripBadge) return null;
-
-  const color = tripBadge.color;
+export default function TripScoreBadge({ tripScore }) {
+  // Don't render anything if no score or score too low to tier
+  if (tripScore == null) return null;
+  const tier = getTier(tripScore);
+  if (!tier.label) return null; // below 35 — don't clutter the card
 
   return (
-    <div className="trip-score-badge" title={`Trip Score: ${tripScore}/100`}>
-      {/* Circular SVG ring */}
-      <svg width="44" height="44" viewBox="0 0 44 44" className="trip-score-ring">
-        {/* Background track */}
-        <circle
-          cx="22" cy="22" r="18"
-          fill="none" stroke="#e0e0e0" strokeWidth="3"
-        />
-        {/* Animated foreground arc */}
-        <circle
-          ref={circleRef}
-          cx="22" cy="22" r="18"
-          fill="none"
-          stroke={color}
-          strokeWidth="3"
-          strokeLinecap="round"
-          style={{ transform: 'rotate(-90deg)', transformOrigin: '50% 50%' }}
-        />
-        {/* Score number in centre */}
-        <text
-          x="22" y="26"
-          textAnchor="middle"
-          fontSize="9"
-          fontWeight="700"
-          fill={color}
-        >
-          {tripScore}
-        </text>
-      </svg>
+    <div
+      className="tsb-strip"
+      style={{ background: tier.bg, borderBottom: `1.5px solid ${tier.bar}22` }}
+      title={`Smart Trip Score: ${tripScore}/100 — computed from booking popularity, seat urgency & value`}
+    >
+      {/* Left: label pill */}
+      <span className="tsb-label" style={{ color: tier.color, background: tier.color + '1a' }}>
+        {tier.label}
+      </span>
 
-      {/* Label pill */}
-      <span
-        className="trip-score-label"
-        style={{ color: tripBadge.color, background: tripBadge.bg }}
-      >
-        {tripBadge.label}
+      {/* Middle: progress bar */}
+      <div className="tsb-bar-track">
+        <div
+          className="tsb-bar-fill"
+          style={{ width: `${tripScore}%`, background: tier.bar }}
+        />
+      </div>
+
+      {/* Right: numeric score */}
+      <span className="tsb-score" style={{ color: tier.color }}>
+        {tripScore}<span style={{ fontSize: '0.65rem', fontWeight: 500, opacity: 0.7 }}>/100</span>
       </span>
     </div>
   );
