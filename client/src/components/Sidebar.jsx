@@ -30,11 +30,11 @@ export default function Sidebar() {
         <div className="sidebar-logo-left">
           <img
             src="/logo.png"
-            alt="HolidayBook"
+            alt="Voyager's Compass"
             style={{ height: '32px', width: 'auto' }}
             onError={e => { e.target.style.display = 'none'; }}
           />
-          <span className="sidebar-brand" style={{ marginLeft: '8px' }}>HolidayBook</span>
+          <span className="sidebar-brand" style={{ marginLeft: '8px' }}>Voyager's Compass</span>
         </div>
         <button
           className="sidebar-toggle-btn"
@@ -164,9 +164,9 @@ export default function Sidebar() {
 
       {/* ── Footer (user info) ───────────────────── */}
       <div className="sidebar-footer">
-        <div className="sidebar-user-avatar">GK</div>
+        <div className="sidebar-user-avatar">GM</div>
         <div className="sidebar-user-info">
-          <div className="name">Girish Kumar</div>
+          <div className="name">Gayathri</div>
           <div className="role">Travel Manager</div>
         </div>
         <button className="sidebar-logout-btn" title="Logout" aria-label="Logout">
