@@ -20,11 +20,12 @@ const bookingSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Auto-generate booking reference before saving
-bookingSchema.pre('save', function (next) {
+// Using async pre-save (Mongoose v7+ compatible — no next() callback)
+bookingSchema.pre('save', async function () {
   if (!this.bookingRef) {
-    this.bookingRef = 'HB' + Math.random().toString(36).substring(2, 8).toUpperCase();
+    const rand = () => Math.random().toString(36).substring(2, 7).toUpperCase();
+    this.bookingRef = 'VC-' + rand() + rand().slice(0, 2); // e.g. VC-AB3CD7
   }
-  next();
 });
 
 module.exports = mongoose.model('Booking', bookingSchema);
