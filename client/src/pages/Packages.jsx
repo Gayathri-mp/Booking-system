@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
+import TripScoreBadge from '../components/TripScoreBadge';
 
 const airlineLogoMap = {
   'Air India Express': '/logos/air_india_express.png',
@@ -24,7 +25,7 @@ function PackageCard({ pkg }) {
     : pkg.duration;
 
   return (
-    <div className="package-card" role="listitem" onClick={handleClick} style={{ cursor: 'pointer' }}>
+    <div className="package-card" role="listitem" onClick={handleClick} style={{ cursor: 'pointer', position: 'relative' }}>
       {pkg.withFlights && pkg.airline ? (
         <>
           <div className="pc-flight-row">
@@ -54,6 +55,12 @@ function PackageCard({ pkg }) {
               <span className="pc-code">{pkg.arrCode}</span>
             </div>
           </div>
+          {/* ── Smart Trip Score Badge (unique feature) ── */}
+          {pkg.tripScore != null && (
+            <div style={{ position: 'absolute', top: '10px', right: '12px' }}>
+              <TripScoreBadge tripScore={pkg.tripScore} tripBadge={pkg.tripBadge} />
+            </div>
+          )}
           <hr className="pc-sep" />
           <div className="pc-pricing-row">
             {(pkg.tiers || []).map((t, i) => (
