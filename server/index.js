@@ -5,6 +5,19 @@ require('dotenv').config();
 
 const app = express();
 
+// --- Startup Check ---
+console.log('🚀 Starting Voyager\'s Compass API...');
+console.log('Environment Debug:', {
+  hasMongo: !!process.env.MONGO_URI,
+  hasJWT: !!process.env.JWT_SECRET,
+  port: process.env.PORT
+});
+
+if (!process.env.MONGO_URI) {
+  console.error('❌ FATAL ERROR: MONGO_URI is missing from environment variables.');
+  process.exit(1);
+}
+
 // Middleware
 app.use(cors());
 app.use(express.json());
