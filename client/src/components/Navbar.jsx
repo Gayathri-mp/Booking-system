@@ -1,5 +1,7 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
+import { useAuth } from '../authContext';
+
 
 const pageTitles = {
   '/':         'Dashboard',
@@ -44,10 +46,16 @@ function Dropdown({ open, children, width = 340 }) {
 
 // ── Main Navbar ──────────────────────────────────────────────────
 export default function Navbar() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   const title = pageTitles[pathname] || "Voyager's Compass";
 
+  const userName = user?.name || 'Gayathri';
+  const userInitials = userName.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+
   const [openPanel, setOpenPanel] = useState(null); // 'notif' | 'msg' | 'profile'
+
   const [notifs,    setNotifs]    = useState(NOTIFICATIONS);
   const [messages,  setMessages]  = useState(MESSAGES);
 
@@ -163,10 +171,10 @@ export default function Navbar() {
           >
             <img
               src="/avatar.png"
-              alt="Gayathri"
-              onError={e => { e.target.src = "https://ui-avatars.com/api/?name=Gayathri&background=111111&color=fff&size=64"; }}
+              alt={userName}
+              onError={e => { e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(userName)}&background=111111&color=fff&size=64`; }}
             />
-            <span className="user-name">Gayathri</span>
+            <span className="user-name">{userName}</span>
             <i className={`fas fa-chevron-${openPanel === 'profile' ? 'up' : 'down'}`}
                style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}></i>
           </div>
@@ -176,12 +184,12 @@ export default function Navbar() {
             <div className="nb-profile-header">
               <img
                 src="/avatar.png"
-                alt="Gayathri"
+                alt={userName}
                 className="nb-profile-avatar"
-                onError={e => { e.target.src = "https://ui-avatars.com/api/?name=Gayathri&background=111111&color=fff&size=64"; }}
+                onError={e => { e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(userName)}&background=111111&color=fff&size=64`; }}
               />
               <div>
-                <div className="nb-profile-name">Gayathri</div>
+                <div className="nb-profile-name">{userName}</div>
                 <div className="nb-profile-role">Travel Manager</div>
               </div>
             </div>
@@ -197,11 +205,12 @@ export default function Navbar() {
               </button>
             ))}
             <div className="nb-divider"></div>
-            <button className="nb-profile-item nb-profile-logout">
+            <button className="nb-profile-item nb-profile-logout" onClick={() => { logout(); navigate('/login'); }}>
               <i className="fas fa-sign-out-alt"></i> Sign Out
             </button>
           </Dropdown>
         </div>
+
 
       </div>
     </header>
