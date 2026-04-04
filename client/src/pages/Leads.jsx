@@ -8,7 +8,7 @@ export default function Leads({ showToast }) {
   useEffect(() => {
     const fetchLeads = async () => {
       try {
-        const res = await api.get('/api/contact');
+        const res = await api.get('/contact');
         setLeads(res.data);
       } catch (err) {
         showToast('Failed to fetch leads.', 'error');
