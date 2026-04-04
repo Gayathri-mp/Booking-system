@@ -733,14 +733,19 @@ input:focus, select:focus, textarea:focus {
   text-align: center;
   position: relative;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .auth-logo-large {
   width: 180px;
   height: 180px;
   margin-bottom: 24px;
-  filter: brightness(0) invert(1); /* make it white on black */
+  filter: invert(1); /* Invert colors to make dark parts light and vice versa */
 }
+
 
 .auth-brand-content h1 {
   font-size: 2.8rem;
