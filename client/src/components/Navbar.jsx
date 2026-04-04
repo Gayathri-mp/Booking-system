@@ -30,10 +30,10 @@ export default function Navbar() {
         </button>
         <div className="user-avatar" tabIndex={0} role="button" aria-label="User menu">
           <img
-            src="https://ui-avatars.com/api/?name=Girish+Kumar&background=111111&color=fff&size=64"
+            src="https://ui-avatars.com/api/?name=Gayathri&background=111111&color=fff&size=64"
             alt="User avatar"
           />
-          <span className="user-name">Girish Kumar</span>
+          <span className="user-name">Gayathri</span>
           <i className="fas fa-chevron-down" style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}></i>
         </div>
       </div>
