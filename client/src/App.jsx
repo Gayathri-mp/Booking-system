@@ -15,6 +15,8 @@ import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Leads from './pages/Leads';
+import Profile from './pages/Profile';
+
 
 // ── Protected Route Wrapper ─────────────────────────────────────
 const ProtectedRoute = ({ children }) => {
@@ -54,8 +56,10 @@ function AppContent() {
         <Route path="/booking"        element={<ProtectedRoute><Booking   showToast={showToast} /></ProtectedRoute>} />
         <Route path="/contact"        element={<ProtectedRoute><Contact   showToast={showToast} /></ProtectedRoute>} />
         <Route path="/leads"          element={<ProtectedRoute><Leads     showToast={showToast} /></ProtectedRoute>} />
+        <Route path="/profile"        element={<ProtectedRoute><Profile   showToast={showToast} /></ProtectedRoute>} />
         
         {/* Redirect unknown to home (which will redirect to login if needed) */}
+
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 

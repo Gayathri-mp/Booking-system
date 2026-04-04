@@ -1,8 +1,11 @@
 const router = require('express').Router();
 const Contact = require('../models/Contact');
+const auth = require('../middleware/authMiddleware');
+
 
 // GET /api/contact — list all contact inquiries (Leads view)
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
+
   try {
     const inquiries = await Contact.find().sort({ createdAt: -1 });
     res.json(inquiries);

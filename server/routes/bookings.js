@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const Booking = require('../models/Booking');
+const auth = require('../middleware/authMiddleware');
+
 
 // POST /api/bookings — create a new booking
 router.post('/', async (req, res) => {
@@ -12,8 +14,9 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET /api/bookings — list all bookings (admin view)
-router.get('/', async (req, res) => {
+// GET /api/bookings — list all bookings (admin/owner view)
+router.get('/', auth, async (req, res) => {
+
   try {
     const bookings = await Booking.find()
       .populate('packageId', 'destination airline totalPrice')
@@ -25,7 +28,8 @@ router.get('/', async (req, res) => {
 });
 
 // GET /api/bookings/stats — analytics for dashboard
-router.get('/stats', async (req, res) => {
+router.get('/stats', auth, async (req, res) => {
+
   try {
     const totalBookings = await Booking.countDocuments();
     
@@ -54,7 +58,8 @@ router.get('/stats', async (req, res) => {
 
 
 // GET /api/bookings/:ref — get booking by reference
-router.get('/:ref', async (req, res) => {
+router.get('/:ref', auth, async (req, res) => {
+
   try {
     const booking = await Booking.findOne({ bookingRef: req.params.ref }).populate('packageId');
     if (!booking) return res.status(404).json({ error: 'Booking not found' });
