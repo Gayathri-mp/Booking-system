@@ -31,7 +31,7 @@ export default function Dashboard({ showToast }) {
           <span>Dashboard</span>
         </nav>
         <h1>Dashboard</h1>
-        <p>Welcome back, Girish! Here's what's happening today.</p>
+        <p>Welcome back, Gayathri! Here's what's happening today.</p>
       </div>
 
       {/* Hero Banner */}
