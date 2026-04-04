@@ -183,9 +183,10 @@ export default function Sidebar() {
       <div className="sidebar-footer">
         <div className="sidebar-user-avatar">{getInitials(user?.name)}</div>
         <div className="sidebar-user-info">
-          <div className="name">{user?.name || 'Gayathri'}</div>
+          <div className="name">{user?.name}</div>
           <div className="role">Travel Manager</div>
         </div>
+
         <button
           className="sidebar-logout-btn"
           title="Logout"
