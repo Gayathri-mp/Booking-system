@@ -1,11 +1,12 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useAuth } from '../authContext';
 
 // Sub-menu items under "Leads"
 const leadsSubItems = [
-  { label: 'All Leads',    count: '144' },
-  { label: 'New Leads',    count: null  },
-  { label: 'Closed Leads', count: null  },
+  { to: '/leads', label: 'All Leads',    count: null },
+  { to: '#',      label: 'New Leads',    count: null  },
+  { to: '#',      label: 'Closed Leads', count: null  },
 ];
 
 const adminItems = [
@@ -16,8 +17,20 @@ const adminItems = [
 ];
 
 export default function Sidebar() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const [collapsed,     setCollapsed]     = useState(false);
   const [leadsOpen,     setLeadsOpen]     = useState(false);
+
+  const getInitials = (name) => {
+    if (!name) return '??';
+    return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   return (
     <aside
@@ -80,13 +93,17 @@ export default function Sidebar() {
         {/* Leads Sub-menu */}
         <div className={`nav-sub${leadsOpen ? ' open' : ''}`}>
           {leadsSubItems.map(item => (
-            <a key={item.label} href="#" className="nav-item">
+            <NavLink
+              key={item.label}
+              to={item.to}
+              className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}
+            >
               <div className="nav-item-left">
                 <span className="nav-icon"><i className="fas fa-circle" style={{ fontSize: '0.4rem' }}></i></span>
                 <span className="nav-label">{item.label}</span>
               </div>
               {item.count && <span className="nav-count">{item.count}</span>}
-            </a>
+            </NavLink>
           ))}
         </div>
 
@@ -164,12 +181,17 @@ export default function Sidebar() {
 
       {/* ── Footer (user info) ───────────────────── */}
       <div className="sidebar-footer">
-        <div className="sidebar-user-avatar">GM</div>
+        <div className="sidebar-user-avatar">{getInitials(user?.name)}</div>
         <div className="sidebar-user-info">
-          <div className="name">Gayathri</div>
+          <div className="name">{user?.name || 'Gayathri'}</div>
           <div className="role">Travel Manager</div>
         </div>
-        <button className="sidebar-logout-btn" title="Logout" aria-label="Logout">
+        <button
+          className="sidebar-logout-btn"
+          title="Logout"
+          aria-label="Logout"
+          onClick={handleLogout}
+        >
           <i className="fas fa-sign-out-alt"></i>
         </button>
       </div>
