@@ -431,3 +431,28 @@ input:focus, select:focus, textarea:focus {
   .pc-airline { min-width: unset; }
   .search-bar-card { flex-direction: column; align-items: stretch; }
 }
+
+/* ── Smart Trip Score Badge (Unique Feature) ──────── */
+.trip-score-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  pointer-events: none; /* don't interfere with card click */
+}
+
+.trip-score-ring {
+  display: block;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.15));
+}
+
+.trip-score-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
