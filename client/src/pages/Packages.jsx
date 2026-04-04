@@ -3,12 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import api from '../api';
 import TripScoreBadge from '../components/TripScoreBadge';
 
+// Images are in client/public/ — Vite serves public/ at the root, so paths are just /filename
 const airlineLogoMap = {
-  'Air India Express': '/logos/air_india_express.png',
-  'Air India':         '/logos/air_india.png',
-  'Indigo':            '/logos/indigo.jpg',
-  'Star Air':          '/logos/star_air.jpg',
+  'Air India Express': '/air_india_express.png',
+  'Air India':         '/air_india.png',
+  'Indigo':            '/indigo.jpg',
+  'Star Air':          '/star_air.jpg',
 };
+
 
 function PackageCard({ pkg }) {
   const navigate = useNavigate();
