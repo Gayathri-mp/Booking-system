@@ -8,6 +8,9 @@ The project includes a modern React frontend (`/client`), a robust backend API (
 - **Frontend (Vercel):** [https://booking-system-frontend-zeta.vercel.app/packages](https://booking-system-frontend-zeta.vercel.app/packages)
 - **Backend (Render):** [https://booking-system-d2ck.onrender.com/](https://booking-system-d2ck.onrender.com/)
 
+fRONTEND LINK - https://booking-system-frontend-zeta.vercel.app/packages
+
+BACKEND LINK - https://booking-system-d2ck.onrender.com/
 ## 📁 Project Structure
 
 ```text
@@ -56,6 +59,7 @@ Booking System/
 
 ## 📌 Features
 
+<<<<<<< HEAD
 - **Authentication System:** Secure user registration and login functionality.
 - **Dynamic Package Browsing:** View, search, and filter holiday packages fetched from the database.
 - **Trip Variations:** Indian & International holiday categories with flight/no-flight configurations.
@@ -81,3 +85,13 @@ npm run dev
 ```
 
 Once running, the React application will be available at `http://localhost:5173/`, and backend will connect to `http://localhost:5000/`.
+=======
+- Responsive sidebar navigation with mobile hamburger toggle
+- Indian & International holiday tabs with flight/no-flight sub-tabs
+- Dynamic package search and star-rating filter
+- Package cards with flight details and pricing
+- Multi-step booking form with validation
+- Booking confirmation modal
+- Contact & support page
+
+>>>>>>> 26646bb5744b66f45f0603d7f3c2f8d5f4f0e4ed
