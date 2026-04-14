@@ -8,9 +8,6 @@ The project includes a modern React frontend (`/client`), a robust backend API (
 - **Frontend (Vercel):** [https://booking-system-frontend-zeta.vercel.app/packages](https://booking-system-frontend-zeta.vercel.app/packages)
 - **Backend (Render):** [https://booking-system-d2ck.onrender.com/](https://booking-system-d2ck.onrender.com/)
 
-fRONTEND LINK - https://booking-system-frontend-zeta.vercel.app/packages
-
-BACKEND LINK - https://booking-system-d2ck.onrender.com/
 ## 📁 Project Structure
 
 ```text
@@ -85,7 +82,6 @@ npm run dev
 ```
 
 Once running, the React application will be available at `http://localhost:5173/`, and backend will connect to `http://localhost:5000/`.
-=======
 - Responsive sidebar navigation with mobile hamburger toggle
 - Indian & International holiday tabs with flight/no-flight sub-tabs
 - Dynamic package search and star-rating filter
