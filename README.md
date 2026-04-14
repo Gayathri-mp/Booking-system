@@ -82,7 +82,6 @@ npm run dev
 ```
 
 Once running, the React application will be available at `http://localhost:5173/`, and backend will connect to `http://localhost:5000/`.
-=======
 - Responsive sidebar navigation with mobile hamburger toggle
 - Indian & International holiday tabs with flight/no-flight sub-tabs
 - Dynamic package search and star-rating filter
