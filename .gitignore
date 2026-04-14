@@ -43,4 +43,4 @@ logs/
 # ── Coverage ────────────────────────────────
 coverage/
 
-DEPLOYMENT_CONFIG.md/
+DEPLOYMENT_CONFIG.md
