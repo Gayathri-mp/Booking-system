@@ -2,6 +2,9 @@
 
 A responsive frontend interface for a Holiday Package Booking System built with pure **HTML5, CSS3, and Vanilla JavaScript** — no frameworks, no dependencies.
 
+fRONTEND LINK - https://booking-system-frontend-zeta.vercel.app/packages
+
+BACKEND LINK - https://booking-system-d2ck.onrender.com/
 ## 📁 Project Structure
 
 ```
@@ -40,5 +43,3 @@ Booking System/
 - Booking confirmation modal
 - Contact & support page
 
-fRONTEND LINK - https://booking-system-frontend-zeta.vercel.app/packages
-BACKEND LINK - https://booking-system-d2ck.onrender.com/
